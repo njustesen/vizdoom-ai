@@ -1,1 +1,1 @@
-# ViZDoom-ai
+# vizdoom-ai
