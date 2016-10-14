@@ -168,7 +168,7 @@ def perform_learning_step(epoch):
         else:
             return end_eps
 
-    s1 = preprocess(game.get_state().image_buffer)
+    s1 = preprocess(game.get_state().screen_buffer)
 
     # With probability eps make a random action.
     eps = exploration_rate(epoch)
