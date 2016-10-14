@@ -11,7 +11,7 @@ from time import time, sleep
 import numpy as np
 import skimage.color, skimage.transform
 from lasagne.init import HeUniform, Constant
-from lasagne.layers import Conv2DLayer, InputLayer, DenseLayer, get_output, \
+from lasagne.layers import Conv2DLayer, InputLayer, DenseLayer, LSTMLayer, get_output, \
     get_all_params, get_all_param_values, set_all_param_values
 from lasagne.nonlinearities import rectify
 from lasagne.objectives import squared_error
@@ -19,20 +19,23 @@ from lasagne.updates import rmsprop
 import theano
 from theano import tensor
 from tqdm import trange
+from vizdoom import ScreenResolution as res
+from random import choice
+
 
 learning_rate = 0.00025
 # learning_rate = 0.0001
 discount_factor = 0.99
 epochs = 100
 #learning_steps_per_epoch = 2000
-learning_steps_per_epoch = 1000
+learning_steps_per_epoch = 20000
 replay_memory_size = 10000
 
 # NN learning settings
 batch_size = 64
 
 # Training regime
-test_episodes_per_epoch = 250
+test_episodes_per_epoch = 1000
 #test_episodes_per_epoch = 100
 
 # Other parameters
@@ -48,7 +51,14 @@ visualize_result = False
 scores = []
 rewards = []
 
+# Results of training
+train_results = []
+test_results = []
+
 # Converts and downsamples the input image
+first_print = []
+
+
 def preprocess(img):
     img = img[0]
     img = skimage.transform.resize(img, resolution)
@@ -93,27 +103,26 @@ def create_network(available_actions_count):
     isterminal = tensor.vector("IsTerminal", dtype="int8")
 
     # Create the input layer of the network.
-    dqn = InputLayer(shape=[None, 1, resolution[0], resolution[1]], input_var=s1)
+    l_in = InputLayer(shape=[None, 1, resolution[0], resolution[1]], input_var=s1)
 
     # Add 2 convolutional layers with ReLu activation
-    dqn = Conv2DLayer(dqn, num_filters=32, filter_size=[8, 8],
+    l_conv1 = Conv2DLayer(l_in, num_filters=32, filter_size=[8, 8],
                       nonlinearity=rectify, W=HeUniform("relu"),
                       b=Constant(.1), stride=4)
-    dqn = Conv2DLayer(dqn, num_filters=64, filter_size=[4, 4],
+    l_conv2 = Conv2DLayer(l_conv1, num_filters=64, filter_size=[4, 4],
                       nonlinearity=rectify, W=HeUniform("relu"),
                       b=Constant(.1), stride=2)
 
     # Add a fully-connected layer.
-    dqn = DenseLayer(dqn, num_units=512, nonlinearity=rectify, W=HeUniform("relu"),
+    l_hid1 = DenseLayer(l_conv2, num_units=4608, nonlinearity=rectify, W=HeUniform("relu"),
                      b=Constant(.1))
 
-    # Add another fully-connected layer.
-    dqn = DenseLayer(dqn, num_units=265, nonlinearity=rectify, W=HeUniform("relu"),
-                     b=Constant(.1))
+    # LSTM layer
+    # l_lstm = LSTMLayer(l_hid1, num_units=512, grad_clipping=10)
 
     # Add the output layer (also fully-connected).
     # (no nonlinearity as it is for approximating an arbitrary real function)
-    dqn = DenseLayer(dqn, num_units=available_actions_count, nonlinearity=None)
+    dqn = DenseLayer(l_hid1, num_units=available_actions_count, nonlinearity=None)
 
     # Define the loss function
     q = get_output(dqn)
@@ -221,7 +230,8 @@ game = DoomGame()
 game.set_vizdoom_path("../../bin/vizdoom")
 
 # Use CIG example config or your own.
-game.load_config("../../examples/config/cig.cfg")
+game.load_config("../config/cig_train.cfg")
+game.set_screen_resolution(res.RES_320X240)
 game.set_window_visible(visual_training)
 
 # Select game and map you want to use.
@@ -240,14 +250,22 @@ game.add_game_args("-host 1 -deathmatch +timelimit 2.0 "
 game.add_game_args("+name AI +colorset 0")
 
 # Multiplayer requires the use of asynchronous modes, but when playing only with bots, synchronous modes can also be used.
-game.set_mode(Mode.PLAYER)
+# game.set_mode(Mode.PLAYER)
 
 # game.set_window_visible(False)
 
 game.init()
 
 # Three example sample actions
-actions = [[1, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0]]
+actions = [
+    [1, 0, 0, 0, 0, 0, 0, 0, 0],    # TURN_LEFT
+    [0, 1, 0, 0, 0, 0, 0, 0, 0],    # TURN_RIGHT
+    [0, 0, 1, 0, 0, 0, 0, 0, 0],    # ATTACK
+    [0, 0, 0, 1, 0, 0, 0, 0, 0],    # MOVE_RIGHT
+    [0, 0, 0, 0, 1, 0, 0, 0, 0],    # MOVE_LEFT
+    [0, 0, 0, 0, 0, 1, 0, 0, 0],    # MOVE_FORWARD
+    [0, 0, 0, 0, 0, 0, 1, 0, 0]     # MOVE_BACKWARD
+]
 
 # Play with this many bots
 bots = 7
@@ -318,6 +336,13 @@ for epoch in range(epochs):
     print("Results: mean: %.1f±%.1f," % (train_scores.mean(), train_scores.std()), \
         "min: %.1f," % train_scores.min(), "max: %.1f," % train_scores.max())
 
+    # Add to result list
+    train_results.append(train_scores.mean())
+
+    print("Saving the results...")
+    with open("train_results.txt", "w") as train_result_file:
+        train_result_file.write(str(train_results))
+
     print("\nTesting...")
     test_episode = []
     test_scores = []
@@ -357,8 +382,15 @@ for epoch in range(epochs):
     print("Results: mean: %.1f±%.1f," % (
         test_scores.mean(), test_scores.std()), "min: %.1f" % test_scores.min(), "max: %.1f" % test_scores.max())
 
+    # Add to result list
+    test_results.append(test_scores.mean())
+
     print("Saving the network weigths...")
     pickle.dump(get_all_param_values(net), open('weights.dump', "w"))
+
+    print("Saving the results...")
+    with open("test_results.txt", "w") as test_result_file:
+        test_result_file.write(str(test_results))
 
     print("Total elapsed time: %.2f minutes" % ((time() - time_start) / 60.0))
 

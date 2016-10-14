@@ -59,7 +59,7 @@
         <entry file="file://$PROJECT_DIR$/cig_bots_learning.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.40307102">
-              <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
+              <caret line="25" column="2" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
               <folding>
                 <element signature="e#46#83#0" expanded="true" />
               </folding>
@@ -82,9 +82,9 @@
         <option value="$PROJECT_DIR$/shortest-example.py" />
         <option value="$PROJECT_DIR$/cig_host.py" />
         <option value="$PROJECT_DIR$/cig_bots.py" />
-        <option value="$PROJECT_DIR$/cig_bots_learning.py" />
         <option value="$PROJECT_DIR$/learning.py" />
         <option value="$PROJECT_DIR$/learning3.py" />
+        <option value="$PROJECT_DIR$/cig_bots_learning.py" />
       </list>
     </option>
   </component>
@@ -433,7 +433,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/cig_bots_learning.py</url>
-          <line>290</line>
+          <line>308</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
@@ -564,7 +564,7 @@
     <entry file="file://$PROJECT_DIR$/cig_bots_learning.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.40307102">
-          <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
+          <caret line="25" column="2" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
           <folding>
             <element signature="e#46#83#0" expanded="true" />
           </folding>
