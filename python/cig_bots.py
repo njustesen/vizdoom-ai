@@ -38,7 +38,7 @@ game.init()
 actions = [[1, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0]]
 
 # Play with this many bots
-bots = 2000
+bots = 7
 
 # Run this many episodes
 episodes = 10
