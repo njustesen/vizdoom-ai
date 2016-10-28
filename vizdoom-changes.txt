@@ -1,0 +1,31 @@
+GameVariable ConfigLoader::stringToGameVariable(std::string str)
+	if (str == "player_position") return PLAYER_POSITION;
+
+ViZDoomSharedMemory::struct SMGameState {
+	int PLAYER_POSITION[3];
+
+int DoomController::getGameVariable(GameVariable var){
+	case PLAYER_POSITION_X:
+        return static_cast<int>(this->gameState->PLAYER_POSITION[0]);
+    case PLAYER_POSITION_Y:
+        return static_cast<int>(this->gameState->PLAYER_POSITION[1]);
+    case PLAYER_POSITION_Z:
+        return static_cast<int>(this->gameState->PLAYER_POSITION[2]);
+
+viz_game.h
+	int PLAYER_POSITION[3];
+
+viz_game.cpp
+	vizGameStateSM->PLAYER_POSITION[0] = VIZ_FixedToDouble(VIZ_PLAYER.mo->__pos.x);
+    vizGameStateSM->PLAYER_POSITION[1] = VIZ_FixedToDouble(VIZ_PLAYER.mo->__pos.y);
+    vizGameStateSM->PLAYER_POSITION[2] = VIZ_FixedToDouble(VIZ_PLAYER.mo->__pos.z);
+
+VizDoomTypes.h
+	PLAYER_POSITION_X,
+	PLAYER_POSITION_Y,
+	PLAYER_POSITION_Z,
+
+ViZDoomPythonModule.cpp
+	ENUM_VAL_2_PYT(PLAYER_POSITION_X)
+	ENUM_VAL_2_PYT(PLAYER_POSITION_Y)
+	ENUM_VAL_2_PYT(PLAYER_POSITION_Z)
