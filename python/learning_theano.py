@@ -11,7 +11,7 @@ import numpy as np
 import skimage.color, skimage.transform
 from lasagne.init import HeUniform, Constant
 from lasagne.layers import Conv2DLayer, InputLayer, DenseLayer, get_output, \
-    get_all_params, get_all_param_values, set_all_param_values
+    get_all_params, get_all_param_values, set_all_param_values, GRULayer
 from lasagne.nonlinearities import rectify
 from lasagne.objectives import squared_error
 from lasagne.updates import rmsprop
@@ -19,35 +19,7 @@ import theano
 from theano import tensor
 from tqdm import trange
 import math
-
-class ReplayMemory:
-    def __init__(self, capacity, resolution):
-        state_shape = (capacity, 1, resolution[0], resolution[1])
-        self.s1 = np.zeros(state_shape, dtype=np.float32)
-        self.s2 = np.zeros(state_shape, dtype=np.float32)
-        self.a = np.zeros(capacity, dtype=np.int32)
-        self.r = np.zeros(capacity, dtype=np.float32)
-        self.isterminal = np.zeros(capacity, dtype=np.bool_)
-
-        self.capacity = capacity
-        self.size = 0
-        self.pos = 0
-
-    def add_transition(self, s1, action, s2, isterminal, reward):
-        self.s1[self.pos, 0] = s1
-        self.a[self.pos] = action
-        if not isterminal:
-            self.s2[self.pos, 0] = s2
-        self.isterminal[self.pos] = isterminal
-        self.r[self.pos] = reward
-
-        self.pos = (self.pos + 1) % self.capacity
-        self.size = min(self.size + 1, self.capacity)
-
-    def get_sample(self, sample_size):
-        i = sample(range(0, self.size), sample_size)
-        return self.s1[i], self.a[i], self.s2[i], self.isterminal[i], self.r[i]
-
+import experience_replay as er
 
 class Learner:
 
@@ -86,7 +58,7 @@ class Learner:
         self.positions = []
 
         # Create replay memory which will store the transitions
-        self.memory = ReplayMemory(capacity=replay_memory_size, resolution=resolution)
+        self.memory = er.ReplayMemory(capacity=replay_memory_size, resolution=resolution)
 
         # Create the input variables
         s1 = tensor.tensor4("State")
@@ -96,23 +68,25 @@ class Learner:
         isterminal = tensor.vector("IsTerminal", dtype="int8")
 
         # Create the input layer of the network.
-        dqn = InputLayer(shape=[None, 1, resolution[0], resolution[1]], input_var=s1)
+        l_in = InputLayer(shape=[None, 1, resolution[0], resolution[1]], input_var=s1)
 
         # Add 2 convolutional layers with ReLu activation
-        dqn = Conv2DLayer(dqn, num_filters=8, filter_size=[6, 6],
+        conv1 = Conv2DLayer(l_in, num_filters=8, filter_size=[6, 6],
                           nonlinearity=rectify, W=HeUniform("relu"),
                           b=Constant(.1), stride=3)
-        dqn = Conv2DLayer(dqn, num_filters=8, filter_size=[3, 3],
+        conv2 = Conv2DLayer(conv1, num_filters=8, filter_size=[3, 3],
                           nonlinearity=rectify, W=HeUniform("relu"),
                           b=Constant(.1), stride=2)
 
         # Add a single fully-connected layer.
-        dqn = DenseLayer(dqn, num_units=128, nonlinearity=rectify, W=HeUniform("relu"),
+        fc1 = DenseLayer(conv2, num_units=128, nonlinearity=rectify, W=HeUniform("relu"),
                          b=Constant(.1))
+
+        rec = GRULayer(fc1, num_units=64)
 
         # Add the output layer (also fully-connected).
         # (no nonlinearity as it is for approximating an arbitrary real function)
-        dqn = DenseLayer(dqn, num_units=available_actions_count, nonlinearity=None)
+        dqn = DenseLayer(rec, num_units=available_actions_count, nonlinearity=None)
 
         # Define the loss function
         q = get_output(dqn)
