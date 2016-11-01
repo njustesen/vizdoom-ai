@@ -67,7 +67,7 @@ class Learner:
                                         activation_fn=tf.nn.relu,
                                         weights_initializer=tf.contrib.layers.xavier_initializer_conv2d(),
                                         biases_initializer=tf.constant_initializer(0.1))
-        conv2 = tf.contrib.layers.convolution2d(conv1, num_outputs=32, kernel_size=[3, 3], stride=[2, 2],
+        conv2 = tf.contrib.layers.convolution2d(conv1, num_outputs=64, kernel_size=[4, 4], stride=[2, 2],
                                         activation_fn=tf.nn.relu,
                                         weights_initializer=tf.contrib.layers.xavier_initializer_conv2d(),
                                         biases_initializer=tf.constant_initializer(0.1))
@@ -137,7 +137,7 @@ class Learner:
         eps_decay_epochs = 0.6 * self.epochs  # 60% of learning time
 
         if linear:
-            return epoch / self.epochs
+            return 1 - (epoch / self.epochs)
 
         if epoch < const_eps_epochs:
             return start_eps
@@ -376,10 +376,13 @@ game.close()
 
 learner = Learner(available_actions_count=len(actions),
                   frame_repeat=4,
-                  epochs=200,
-                  learning_steps_per_epoch=2000,
+                  epochs=100,
+                  learning_steps_per_epoch=4000,
                   test_episodes_per_epoch=5,
                   reward_exploration=True,
-                  resolution=(64, 48))
+                  resolution=(64, 48),
+                  model_savefile="/tmp/explorer_model.ckpt")
+
 learner.learn(server, actions)
-#learner.play(server, actions, episodes_to_watch=0)
+
+#learner.play(server, actions, episodes_to_watch=10)
