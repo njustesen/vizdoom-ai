@@ -404,7 +404,10 @@ visual = False
 async = False
 screen_resolution = ScreenResolution.RES_320X240
 scaled_resolution = (48, 64)
-p_decay = 1  # Override if needed
+
+# Override these if used
+p_decay = 1
+bots = 7
 
 # Simple basic
 '''
@@ -439,6 +442,7 @@ config = "../config/simpler_adv.cfg"
 '''
 
 # Simple exploration
+'''
 hidden_nodes = 512
 conv1_filters = 32
 conv2_filters = 64
@@ -452,9 +456,9 @@ model_name = "simple_exploration"
 death_match = False
 config = "../config/simpler_adv_expl.cfg"
 p_decay = 0.90
+'''
 
 # Deathmatch exploration
-'''
 hidden_nodes = 512
 conv1_filters = 32
 conv2_filters = 64
@@ -463,18 +467,20 @@ frame_repeat = 4
 learning_steps_per_epoch = 5000
 test_episodes_per_epoch = 10
 reward_exploration = True
-epochs = 100
-model_name = "deathmatch_exploration"
+epochs = 200
+model_name = "deathmatch_exploration_no_bots"
 death_match = True
-config = "../config/cig_train.cfg"
-'''
+bots = 0
+config = "../config/cig_train_expl.cfg"
+p_decay = 0.90
 
 # ------------------------------------------------------------------
 server = DoomServer(screen_resolution=screen_resolution,
                     config_file_path=config,
                     deathmatch=death_match,
                     visual=visual,
-                    async=async)
+                    async=async,
+                    bots=bots)
 
 print("Starting game to get actions.")
 game = server.start_game()

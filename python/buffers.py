@@ -33,7 +33,7 @@ game.load_config("../../examples/config/deadly_corridor.cfg")
 
 game.set_screen_format(ScreenFormat.RGB24)
 # game.set_screen_format(ScreenFormat.ARGB32)
-# game.set_screen_format(ScreenFormat.GRAY8)
+# game.set_screen_format(ScreenFormat.GRAY8)aw
 
 # game.set_screen_format(ScreenFormat.BGR24)
 # game.set_screen_format(ScreenFormat.RGBA32)
