@@ -14,6 +14,8 @@ import math
 import experience_replay as er
 import os
 
+script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
+
 class Learner:
 
     def __init__(self,
@@ -376,7 +378,7 @@ class DoomServer:
 #config = "../config/simpler_adv.cfg"
 config = "../config/cig_train.cfg"
 #config = "../../examples/config/my_way_home.cfg"
-server = DoomServer(ScreenResolution.RES_320X240, config, deathmatch=True, visual=True, async=False)
+server = DoomServer(ScreenResolution.RES_320X240, config, deathmatch=True, visual=False, async=False)
 game = server.start_game()
 n = game.get_available_buttons_size()
 actions = [list(a) for a in it.product([0, 1], repeat=n)]
@@ -394,4 +396,4 @@ learner = Learner(available_actions_count=len(actions),
 
 learner.learn(server, actions)
 
-learner.play(server, actions, episodes_to_watch=10)
+#learner.play(server, actions, episodes_to_watch=10)
