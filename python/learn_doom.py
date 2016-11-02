@@ -389,7 +389,7 @@ class DoomServer:
 # --------------- EXPERIMENTS ---------------
 
 # Test settings
-visual = True
+visual = False
 async = False
 screen_resolution = ScreenResolution.RES_320X240
 scaled_resolution = (48, 64)
