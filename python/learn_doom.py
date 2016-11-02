@@ -183,25 +183,36 @@ class Learner:
     def get_position(self, game):
         return (game.get_game_variable(GameVariable.PLAYER_POSITION_X), game.get_game_variable(GameVariable.PLAYER_POSITION_Y))
 
+    def distance(self, a, b):
+        return math.sqrt((a[0] - b[0])**2 + (a[1] - b[1])**2) / 100
+
     def exploration_reward(self, game):
+
         pos = self.get_position(game)
-        total_distance = 0
+
+        if len(self.positions) < 0:
+            self.positions.append(pos)
+            return 0
+
+        weighted_sum = 0
         t = 0
-        s = 0
+        last_pos = ()
         for p in reversed(self.positions):
-            distance = math.sqrt((pos[0] - p[0])**2 + (pos[1] - p[1])**2)
-            decay = self.p_decay**t
-            s += decay
-            total_distance += decay * distance
+            if t == 0:
+                last_pos = p
+                weighted_sum += self.distance(pos, last_pos)
+            else:
+                new_distance = self.distance(pos, p)
+                old_distance = self.distance(last_pos, p)
+                diff = new_distance - old_distance
+                weighted_diff = diff * (self.p_decay**t)
+                weighted_sum += weighted_diff
             t += 1
-        if t > 0:
-            p_reward = (total_distance / s) / self.frame_repeat
-        else:
-            p_reward = 0
 
         self.positions.append(pos)
 
-        return p_reward
+        return weighted_sum
+
 
     def preprocess(self, img):
         """ Converts and down-samples the input image. """
@@ -393,6 +404,7 @@ visual = False
 async = False
 screen_resolution = ScreenResolution.RES_320X240
 scaled_resolution = (48, 64)
+p_decay = 1  # Override if needed
 
 # Simple basic
 '''
@@ -411,6 +423,7 @@ config = "../config/simpler_basic.cfg"
 '''
 
 # Simple advanced
+'''
 hidden_nodes = 512
 conv1_filters = 32
 conv2_filters = 64
@@ -423,22 +436,22 @@ epochs = 20
 model_name = "simple_adv"
 death_match = False
 config = "../config/simpler_adv.cfg"
+'''
 
 # Simple exploration
-'''
 hidden_nodes = 512
 conv1_filters = 32
 conv2_filters = 64
 replay_memory_size = 1000000
 frame_repeat = 4
-learning_steps_per_epoch = 200
+learning_steps_per_epoch = 2000
 test_episodes_per_epoch = 10
 reward_exploration = True
 epochs = 20
 model_name = "simple_exploration"
 death_match = False
 config = "../config/simpler_adv_expl.cfg"
-'''
+p_decay = 0.90
 
 # Deathmatch exploration
 '''
@@ -470,7 +483,6 @@ actions = [list(a) for a in it.product([0, 1], repeat=n)]
 game.close()
 print("Game closed again")
 
-
 script_dir = os.path.dirname(os.path.abspath(__file__)) #<-- absolute dir the script is in
 print("Script path="+script_dir)
 
@@ -486,6 +498,7 @@ learner = Learner(available_actions_count=len(actions),
                   reward_exploration=reward_exploration,
                   resolution=scaled_resolution,
                   replay_memory_size=replay_memory_size,
+                  p_decay=p_decay,
                   model_savefile=script_dir+"/tf/"+model_name+".ckpt")
 
 print("Training learner")
