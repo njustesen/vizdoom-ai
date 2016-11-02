@@ -444,7 +444,7 @@ game.close()
 print("Game closed again")
 
 
-script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
+script_dir = os.path.dirname(os.path.abspath(__file__)) #<-- absolute dir the script is in
 print("Script path="+script_dir)
 
 print("Creating learner")
