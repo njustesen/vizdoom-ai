@@ -14,8 +14,6 @@ import math
 import experience_replay as er
 import os
 
-script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
-
 class Learner:
 
     def __init__(self,
@@ -444,6 +442,10 @@ n = game.get_available_buttons_size()
 actions = [list(a) for a in it.product([0, 1], repeat=n)]
 game.close()
 print("Game closed again")
+
+
+script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
+print("Script path="+script_dir)
 
 print("Creating learner")
 learner = Learner(available_actions_count=len(actions),
