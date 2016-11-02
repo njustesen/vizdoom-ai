@@ -14,8 +14,6 @@ import math
 import experience_replay as er
 import os
 
-script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
-
 class Learner:
 
     def __init__(self,
@@ -23,9 +21,6 @@ class Learner:
                  learning_rate=0.00025,
                  discount_factor=0.99,
                  epochs=20,
-                 hidden_nodes=4608,
-                 conv1_filters=32,
-                 conv2_filters=64,
                  learning_steps_per_epoch=2000,
                  replay_memory_size=10000,
                  batch_size=64,
@@ -69,11 +64,11 @@ class Learner:
         target_q_ = tf.placeholder(tf.float32, [None, available_actions_count], name="TargetQ")
 
         # Add 2 convolutional layers with ReLu activation
-        conv1 = tf.contrib.layers.convolution2d(s1_, num_outputs=conv1_filters, kernel_size=[6, 6], stride=[3, 3],
+        conv1 = tf.contrib.layers.convolution2d(s1_, num_outputs=32, kernel_size=[6, 6], stride=[3, 3],
                                         activation_fn=tf.nn.relu,
                                         weights_initializer=tf.contrib.layers.xavier_initializer_conv2d(),
                                         biases_initializer=tf.constant_initializer(0.1))
-        conv2 = tf.contrib.layers.convolution2d(conv1, num_outputs=conv2_filters, kernel_size=[3, 3], stride=[2, 2],
+        conv2 = tf.contrib.layers.convolution2d(conv1, num_outputs=64, kernel_size=[3, 3], stride=[2, 2],
                                         activation_fn=tf.nn.relu,
                                         weights_initializer=tf.contrib.layers.xavier_initializer_conv2d(),
                                         biases_initializer=tf.constant_initializer(0.1))
@@ -81,7 +76,7 @@ class Learner:
 
         #conv2_flat = tf.contrib.layers.DropoutLayer(conv2_flat, keep=0.5, name='dropout')
 
-        fc1 = tf.contrib.layers.fully_connected(conv2_flat, num_outputs=hidden_nodes, activation_fn=tf.nn.relu,
+        fc1 = tf.contrib.layers.fully_connected(conv2_flat, num_outputs=128, activation_fn=tf.nn.relu,
                                         weights_initializer=tf.contrib.layers.xavier_initializer(),
                                         biases_initializer=tf.constant_initializer(0.1))
 
@@ -375,89 +370,28 @@ class DoomServer:
         game.new_episode()
         return game
 
-# --------------- EXPERIMENTS ---------------
 
-# Test settings
-visual = False
-async = False
-screen_resolution = ScreenResolution.RES_320X240
-scaled_resolution = (48, 64)
-
-# Simple basic
-'''
-hidden_nodes = 128
-conv1_filters = 8
-conv2_filters = 8
-replay_memory_size = 10000
-frame_repeat = 12
-learning_steps_per_epoch = 1000
-test_episodes_per_epoch = 10
-reward_exploration = False
-epochs = 20
-model_name = "simple_basic"
-death_match = False
-config = "../config/simpler_basic.cfg"
-'''
-
-# Simple advanced
-hidden_nodes = 4608
-conv1_filters = 32
-conv2_filters = 64
-replay_memory_size = 1000000
-frame_repeat = 4
-learning_steps_per_epoch = 2000
-test_episodes_per_epoch = 10
-reward_exploration = False
-epochs = 20
-model_name = "simple_adv"
-death_match = False
-config = "../config/simpler_adv.cfg"
-
-# Deathmatch exploration
-'''
-hidden_nodes = 4608
-conv1_filters = 32
-conv2_filters = 64
-replay_memory_size = 10000
-frame_repeat = 4
-learning_steps_per_epoch = 5000
-test_episodes_per_epoch = 10
-reward_exploration = True
-epochs = 100
-model_name = "deathmatch_exploration"
-death_match = True
+#config = "../../examples/config/rocket_basic.cfg"
+#config = "../../examples/config/basic.cfg"
+#config = "../config/simpler_adv.cfg"
 config = "../config/cig_train.cfg"
-'''
-
-# ------------------------------------------------------------------
-server = DoomServer(screen_resolution=screen_resolution,
-                    config_file_path=config,
-                    deathmatch=death_match,
-                    visual=visual,
-                    async=async)
-
-print("Starting game to get actions.")
+#config = "../../examples/config/my_way_home.cfg"
+server = DoomServer(ScreenResolution.RES_320X240, config, deathmatch=True, visual=True, async=False)
 game = server.start_game()
 n = game.get_available_buttons_size()
 actions = [list(a) for a in it.product([0, 1], repeat=n)]
 game.close()
-print("Game closed again")
 
-print("Creating learner")
 learner = Learner(available_actions_count=len(actions),
-                  frame_repeat=frame_repeat,
-                  hidden_nodes=hidden_nodes,
-                  conv1_filters=conv1_filters,
-                  conv2_filters=conv2_filters,
-                  epochs=epochs,
-                  learning_steps_per_epoch=learning_steps_per_epoch,
-                  test_episodes_per_epoch=test_episodes_per_epoch,
-                  reward_exploration=reward_exploration,
-                  resolution=scaled_resolution,
-                  replay_memory_size=replay_memory_size,
-                  model_savefile=script_dir+"/tf/"+model_name+".ckpt")
+                  frame_repeat=4,
+                  epochs=1,
+                  learning_steps_per_epoch=1000,
+                  test_episodes_per_epoch=10,
+                  reward_exploration=True,
+                  resolution=(48, 64),
+                  replay_memory_size=10000,
+                  model_savefile=script_dir+"/tf/explorer_model.ckpt")
 
-print("Training learner")
 learner.learn(server, actions)
 
-#learner.play(server, actions, episodes_to_watch=10)
+learner.play(server, actions, episodes_to_watch=10)
