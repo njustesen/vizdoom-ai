@@ -438,7 +438,7 @@ game.close()
 learner = Learner(available_actions_count=len(actions),
                   frame_repeat=frame_repeat,
                   epochs=epochs,
-                  hidden_nodes=128,
+                  hidden_nodes=hidden_nodes,
                   conv1_filters=conv1_filters,
                   conv2_filters=conv2_filters,
                   learning_steps_per_epoch=learning_steps_per_epoch,

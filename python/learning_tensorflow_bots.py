@@ -369,7 +369,7 @@ class DoomServer:
             return self.start_game()
         game.new_episode()
         return game
-    
+
 
 #config = "../../examples/config/rocket_basic.cfg"
 #config = "../../examples/config/basic.cfg"
