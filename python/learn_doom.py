@@ -214,15 +214,16 @@ class Learner:
         time_start = time()
         train_results = []
         test_results = []
+
+        game = server.start_game()
         for epoch in range(self.epochs):
             print("\nEpoch %d\n-------" % (epoch + 1))
             train_episodes_finished = 0
             train_scores = []
-
+            game = server.restart_game(game)
             print("Training...")
             eps = self.exploration_rate(epoch, linear=True)
             print("Epsilon: " + str(eps))
-            game = server.start_game()
             self.positions = []
             score = 0
             for learning_step in trange(self.learning_steps_per_epoch):
