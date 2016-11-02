@@ -399,7 +399,7 @@ config = "../config/simpler_basic.cfg"
 '''
 
 # Simple advanced
-hidden_nodes = 4608
+hidden_nodes = 512
 conv1_filters = 32
 conv2_filters = 64
 replay_memory_size = 1000000
@@ -415,7 +415,7 @@ config = "../config/simpler_adv.cfg"
 
 # Deathmatch exploration
 '''
-hidden_nodes = 4608
+hidden_nodes = 512
 conv1_filters = 32
 conv2_filters = 64
 replay_memory_size = 10000
