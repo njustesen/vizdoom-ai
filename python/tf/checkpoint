@@ -1,0 +1,2 @@
+model_checkpoint_path: "/Users/noju/Documents/ViZDoom/vizdoom-ai/python/tf/explorer_model.ckpt"
+all_model_checkpoint_paths: "/Users/noju/Documents/ViZDoom/vizdoom-ai/python/tf/explorer_model.ckpt"

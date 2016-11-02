@@ -12,6 +12,7 @@ import tensorflow as tf
 from tqdm import trange
 import math
 import experience_replay as er
+import os
 
 class Learner:
 
@@ -250,7 +251,7 @@ class Learner:
             print("Results: mean: %.1f±%.1f," % (train_scores.mean(), train_scores.std()), \
                   "min: %.1f," % train_scores.min(), "max: %.1f," % train_scores.max())
 
-            train_results.append((train_scores.mean(), train_scores.std()))
+            train_results.append((epoch, train_scores.mean(), train_scores.std()))
 
             print("\nTesting...")
             test_scores = []
@@ -273,7 +274,7 @@ class Learner:
                 test_scores.mean(), test_scores.std()), "min: %.1f" % test_scores.min(),
                   "max: %.1f" % test_scores.max())
 
-            test_results.append((test_scores.mean(), test_scores.std()))
+            test_results.append((epoch, test_scores.mean(), test_scores.std()))
 
             print("Saving the network weigths to:", self.model_savefile)
             saver.save(self.session, self.model_savefile)
@@ -294,6 +295,7 @@ class Learner:
         print("Loading model from: ", self.model_savefile)
         saver = tf.train.Saver()
         saver.restore(self.session, self.model_savefile)
+        game = server.start_game()
 
         for _ in range(episodes_to_watch):
             game = server.restart_game(game)
@@ -315,6 +317,7 @@ class Learner:
                 score = game.get_total_reward()
             print("Total score: ", score)
 
+        game.close()
 
 class DoomServer:
 
@@ -370,10 +373,10 @@ class DoomServer:
 
 #config = "../../examples/config/rocket_basic.cfg"
 #config = "../../examples/config/basic.cfg"
-config = "../config/simpler_adv.cfg"
-#config = "../config/cig_train.cfg"
+#config = "../config/simpler_adv.cfg"
+config = "../config/cig_train.cfg"
 #config = "../../examples/config/my_way_home.cfg"
-server = DoomServer(ScreenResolution.RES_320X240, config, deathmatch=False, visual=True, async=False)
+server = DoomServer(ScreenResolution.RES_320X240, config, deathmatch=True, visual=True, async=False)
 game = server.start_game()
 n = game.get_available_buttons_size()
 actions = [list(a) for a in it.product([0, 1], repeat=n)]
@@ -381,14 +384,14 @@ game.close()
 
 learner = Learner(available_actions_count=len(actions),
                   frame_repeat=4,
-                  epochs=20,
-                  learning_steps_per_epoch=5000,
+                  epochs=1,
+                  learning_steps_per_epoch=1000,
                   test_episodes_per_epoch=10,
-                  reward_exploration=False,
+                  reward_exploration=True,
                   resolution=(48, 64),
                   replay_memory_size=10000,
-                  model_savefile="/tmp/simple_basic_model.ckpt")
+                  model_savefile=script_dir+"/tf/explorer_model.ckpt")
 
 learner.learn(server, actions)
 
-#learner.play(server, actions, episodes_to_watch=10)
+learner.play(server, actions, episodes_to_watch=10)
