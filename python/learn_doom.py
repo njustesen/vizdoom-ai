@@ -72,11 +72,14 @@ server = ds.DoomServer(screen_resolution=screen_resolution,
                        visual=visual,
                        async=async)
 
+print("Starting game to get actions.")
 game = server.start_game()
 n = game.get_available_buttons_size()
 actions = [list(a) for a in it.product([0, 1], repeat=n)]
 game.close()
+print("Game closed again")
 
+print("Creating learner")
 learner = tfl.Learner(available_actions_count=len(actions),
                       frame_repeat=frame_repeat,
                       hidden_nodes=hidden_nodes,
@@ -90,6 +93,7 @@ learner = tfl.Learner(available_actions_count=len(actions),
                       replay_memory_size=replay_memory_size,
                       model_savefile=script_dir+"/tf/"+model_name+".ckpt")
 
+print("Training learner")
 learner.learn(server, actions)
 
 #learner.play(server, actions, episodes_to_watch=10)
