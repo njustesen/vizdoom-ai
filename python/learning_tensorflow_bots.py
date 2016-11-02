@@ -67,7 +67,7 @@ class Learner:
                                         activation_fn=tf.nn.relu,
                                         weights_initializer=tf.contrib.layers.xavier_initializer_conv2d(),
                                         biases_initializer=tf.constant_initializer(0.1))
-        conv2 = tf.contrib.layers.convolution2d(conv1, num_outputs=64, kernel_size=[4, 4], stride=[2, 2],
+        conv2 = tf.contrib.layers.convolution2d(conv1, num_outputs=64, kernel_size=[3, 3], stride=[2, 2],
                                         activation_fn=tf.nn.relu,
                                         weights_initializer=tf.contrib.layers.xavier_initializer_conv2d(),
                                         biases_initializer=tf.constant_initializer(0.1))
@@ -155,7 +155,7 @@ class Learner:
         s1 = self.preprocess(game.get_state().screen_buffer)
 
         # With probability eps make a random action.
-        eps = self.exploration_rate(epoch, linear=True)
+        eps = self.exploration_rate(epoch, linear=False)
         if random() <= eps:
             a = randint(0, len(actions) - 1)
         else:
@@ -234,8 +234,7 @@ class Learner:
                     if not self.reward_exploration:
                         score = game.get_total_reward()
                     train_scores.append(score)
-                    game.close()
-                    game = server.start_game()
+                    game = server.restart_game(game)
                     train_episodes_finished += 1
                     self.positions = []
                     score = 0
@@ -256,7 +255,7 @@ class Learner:
             print("\nTesting...")
             test_scores = []
             for test_episode in trange(self.test_episodes_per_epoch):
-                game = server.start_game()
+                game = server.restart_game(game)
                 self.positions = []
                 score = 0
                 while not game.is_episode_finished():
@@ -268,7 +267,6 @@ class Learner:
                 if not self.reward_exploration:
                     score = game.get_total_reward()
                 test_scores.append(score)
-                game.close()
 
             test_scores = np.array(test_scores)
             print("Results: mean: %.1f±%.1f," % (
@@ -298,7 +296,7 @@ class Learner:
         saver.restore(self.session, self.model_savefile)
 
         for _ in range(episodes_to_watch):
-            game = server.start_game()
+            game = server.restart_game(game)
             score = 0
             while not game.is_episode_finished():
                 state = self.preprocess(game.get_state().screen_buffer)
@@ -316,7 +314,6 @@ class Learner:
             if not self.reward_exploration:
                 score = game.get_total_reward()
             print("Total score: ", score)
-            game.close()
 
 
 class DoomServer:
@@ -363,12 +360,20 @@ class DoomServer:
         print("Doom initialized.")
         return game
 
+    def restart_game(self, game):
+        if self.deathmatch:
+            game.close()
+            return self.start_game()
+        game.new_episode()
+        return game
+
+
 #config = "../../examples/config/rocket_basic.cfg"
 #config = "../../examples/config/basic.cfg"
-#config = "../config/simpler_basic.cfg"
-config = "../config/cig_train.cfg"
+config = "../config/simpler_adv.cfg"
+#config = "../config/cig_train.cfg"
 #config = "../../examples/config/my_way_home.cfg"
-server = DoomServer(ScreenResolution.RES_320X240, config, deathmatch=True, visual=False, async=False)
+server = DoomServer(ScreenResolution.RES_320X240, config, deathmatch=False, visual=True, async=False)
 game = server.start_game()
 n = game.get_available_buttons_size()
 actions = [list(a) for a in it.product([0, 1], repeat=n)]
@@ -376,12 +381,13 @@ game.close()
 
 learner = Learner(available_actions_count=len(actions),
                   frame_repeat=4,
-                  epochs=100,
-                  learning_steps_per_epoch=4000,
-                  test_episodes_per_epoch=5,
-                  reward_exploration=True,
-                  resolution=(64, 48),
-                  model_savefile="/tmp/explorer_model.ckpt")
+                  epochs=20,
+                  learning_steps_per_epoch=5000,
+                  test_episodes_per_epoch=10,
+                  reward_exploration=False,
+                  resolution=(48, 64),
+                  replay_memory_size=10000,
+                  model_savefile="/tmp/simple_basic_model.ckpt")
 
 learner.learn(server, actions)
 

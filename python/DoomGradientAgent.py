@@ -60,10 +60,10 @@ class DoomGradientAgent(object):
 
         # Create the input layer of the network.
         l_in = InputLayer(shape=[None, 1, resolution[0], resolution[1]], input_var=sym_state)
-        l_conv1 = Conv2DLayer(l_in, num_filters=32, filter_size=[8, 8],
+        l_conv1 = Conv2DLayer(l_in, num_filters=8, filter_size=[6, 6],
                           nonlinearity=rectify, W=HeUniform("relu"),
                           b=Constant(.1), stride=4, name='convLayer1')
-        l_conv2 = Conv2DLayer(l_conv1, num_filters=64, filter_size=[4, 4],
+        l_conv2 = Conv2DLayer(l_conv1, num_filters=8, filter_size=[3, 3],
                           nonlinearity=rectify, W=HeUniform("relu"),
                           b=Constant(.1), stride=2, name='convLayer2')
         l_hid1 = DenseLayer(l_conv2, num_units=4608, nonlinearity=rectify, W=HeUniform("relu"),

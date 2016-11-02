@@ -11,7 +11,7 @@ import skimage.color, skimage.transform
 from lasagne.init import HeUniform, Constant
 from lasagne.layers import Conv2DLayer, InputLayer, DenseLayer, get_output, \
     get_all_params, get_all_param_values, set_all_param_values
-from lasagne.nonlinearities import rectify, softmax
+from lasagne.nonlinearities import rectify, softmax, tanh
 from lasagne.objectives import squared_error
 from lasagne.updates import rmsprop
 import theano
@@ -52,14 +52,11 @@ class DoomGradientAgent(object):
 
         # Create the input layer of the network.
         l_in = InputLayer(shape=[None, 1, resolution[0], resolution[1]], input_var=sym_state)
-        l_conv1 = Conv2DLayer(l_in, num_filters=32, filter_size=[8, 8],
-                          nonlinearity=rectify, W=HeUniform("relu"),
-                          b=Constant(.1), stride=4, name='convLayer1')
-        l_conv2 = Conv2DLayer(l_conv1, num_filters=64, filter_size=[4, 4],
-                          nonlinearity=rectify, W=HeUniform("relu"),
-                          b=Constant(.1), stride=2, name='convLayer2')
-        l_hid1 = DenseLayer(l_conv2, num_units=128, nonlinearity=rectify, W=HeUniform("relu"),
-                     b=Constant(.1), name='hiddenLayer1')
+        l_conv1 = Conv2DLayer(l_in, num_filters=8, filter_size=[6, 6],
+                          nonlinearity=tanh, stride=3, name='convLayer1')
+        l_conv2 = Conv2DLayer(l_conv1, num_filters=8, filter_size=[3, 3],
+                          nonlinearity=tanh, stride=2, name='convLayer2')
+        l_hid1 = DenseLayer(l_conv2, num_units=128, nonlinearity=tanh, name='hiddenLayer1')
         # LSTM layer
         # l_lstm = LSTMLayer(l_hid1, num_units=512, grad_clipping=10)
         l_out = DenseLayer(l_hid1, num_units=n_outputs, nonlinearity=softmax, name='outputlayer')
@@ -85,7 +82,7 @@ class DoomGradientAgent(object):
         self.f_eval = theano.function([sym_state], eval_out, allow_input_downcast=True)
 
     def learn(self, n_epochs=100, n_runs=100,
-              learning_rate=0.1, discount_factor=1.0, n_early_stop=0):
+              learning_rate=0.02, discount_factor=0.99, n_early_stop=0):
         """
         Learn the given environment by the policy gradient method.
         """
@@ -98,6 +95,8 @@ class DoomGradientAgent(object):
         game = DoomGame()
         game.load_config(config_file_path)
         game.set_window_visible(graphics)
+        game.set_screen_format(ScreenFormat.GRAY8)
+        game.set_screen_resolution(ScreenResolution.RES_320X240)
         game.set_mode(Mode.PLAYER)
         game.init()
 
@@ -145,7 +144,7 @@ class DoomGradientAgent(object):
         traj = {'s': [], 'a': [], 'r': [],}
         game.new_episode()
         while not game.is_episode_finished():
-            state = self.preprocess(game.get_state().image_buffer)
+            state = self.preprocess(game.get_state().screen_buffer)
             action = self.get_action(state, deterministic)
             reward = game.make_action(actions[action], self.frame_repeat)
             traj['s'].append(state)
@@ -177,7 +176,8 @@ class DoomGradientAgent(object):
         return r_out
 
     def preprocess(self, img):
-        img = img[0]
+        #img = img[0]
+
         # Reshape from (x,y) to (channels, x, y)
         img = skimage.transform.resize(img, self.resolution)
         img = img.astype(np.float32)
