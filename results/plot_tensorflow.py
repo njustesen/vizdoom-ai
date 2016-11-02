@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import os
 
 script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
-folder = "deathmatch_exploration_1/"
+folder = "simple_adv_2/"
 
 def plot_file(filename, color, label, linestyle):
     epochs = []
@@ -17,7 +17,7 @@ def plot_file(filename, color, label, linestyle):
             score = line.split()[1]
             std_dev = line.split()[2]
             print("Epoch: " + epoch + ", Score: " + score + ", StdDev: " + std_dev)
-            epochs.append(epoch)
+            epochs.append(int(epoch) + 1)
             scores.append(score)
             std_devs.append(std_dev)
 
@@ -32,8 +32,8 @@ plot_file('train.dat', color="red", label="train", linestyle="dashed")
 plot_file('test.dat', color="blue", label="test", linestyle="solid")
 
 plt.legend(loc='lower right', frameon=False)
-plt.xlim([0, 100])
-#plt.ylim(ymax=100)
+plt.xlim([0, 20])
+plt.ylim(ymax=100)
 
 plt.axhline(0, color='black', linestyle="dashed")
 plt.axvline(0, color='black', linestyle="dashed")
