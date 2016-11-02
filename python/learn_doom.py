@@ -29,7 +29,7 @@ class Learner:
                  batch_size=64,
                  test_episodes_per_epoch=2,
                  frame_repeat=12,
-                 p_decay=0.45,
+                 p_decay=0.95,
                  reward_exploration=False,
                  resolution=(30, 45),
                  model_savefile="/tmp/model.ckpt",
@@ -141,7 +141,7 @@ class Learner:
         eps_decay_epochs = 0.6 * self.epochs  # 60% of learning time
 
         if linear:
-            return 1 - (epoch / self.epochs)
+            return max(1 - (epoch / self.epochs), end_eps)
 
         if epoch < const_eps_epochs:
             return start_eps
@@ -168,7 +168,7 @@ class Learner:
 
         reward = game.make_action(actions[a], self.frame_repeat)
         if reward_exploration:
-            reward = self.position_reward(game, append=True)
+            reward = self.exploration_reward(game)
 
         isterminal = game.is_episode_finished()
         s2 = self.preprocess(game.get_state().screen_buffer) if not isterminal else None
@@ -178,19 +178,29 @@ class Learner:
 
         self.learn_from_memory()
 
+        return reward
+
     def get_position(self, game):
         return (game.get_game_variable(GameVariable.PLAYER_POSITION_X), game.get_game_variable(GameVariable.PLAYER_POSITION_Y))
 
-    def position_reward(self, game, append):
+    def exploration_reward(self, game):
         pos = self.get_position(game)
-        p_reward = 0
-        idx = 0
+        total_distance = 0
+        t = 0
+        s = 0
         for p in reversed(self.positions):
             distance = math.sqrt((pos[0] - p[0])**2 + (pos[1] - p[1])**2)
-            p_reward += ((self.p_decay**idx)*2) * distance / 100
-            idx += 1
-        if append:
-            self.positions.append(pos)
+            decay = self.p_decay**t
+            s += decay
+            total_distance += decay * distance
+            t += 1
+        if t > 0:
+            p_reward = (total_distance / s) / self.frame_repeat
+        else:
+            p_reward = 0
+
+        self.positions.append(pos)
+
         return p_reward
 
     def preprocess(self, img):
@@ -244,9 +254,9 @@ class Learner:
                     self.positions = []
                     score = 0
 
-                self.perform_learning_step(game, actions, epoch, self.reward_exploration)
+                reward = self.perform_learning_step(game, actions, epoch, self.reward_exploration)
                 if self.reward_exploration:
-                    score += self.position_reward(game, append=False)
+                    score += reward
 
             print("%d training episodes played." % train_episodes_finished)
 
@@ -268,7 +278,7 @@ class Learner:
                     best_action_index = self.fn_get_best_action(state)
                     game.make_action(actions[best_action_index], self.frame_repeat)
                     if self.reward_exploration:
-                        score += self.position_reward(game, append=True)
+                        score += self.exploration_reward(game)
                 if not self.reward_exploration:
                     score = game.get_total_reward()
                 test_scores.append(score)
@@ -379,7 +389,7 @@ class DoomServer:
 # --------------- EXPERIMENTS ---------------
 
 # Test settings
-visual = False
+visual = True
 async = False
 screen_resolution = ScreenResolution.RES_320X240
 scaled_resolution = (48, 64)
@@ -414,12 +424,28 @@ model_name = "simple_adv"
 death_match = False
 config = "../config/simpler_adv.cfg"
 
-# Deathmatch exploration
+# Simple exploration
 '''
-hidden_nodes = 4608
+hidden_nodes = 512
 conv1_filters = 32
 conv2_filters = 64
-replay_memory_size = 10000
+replay_memory_size = 1000000
+frame_repeat = 4
+learning_steps_per_epoch = 200
+test_episodes_per_epoch = 10
+reward_exploration = True
+epochs = 20
+model_name = "simple_exploration"
+death_match = False
+config = "../config/simpler_adv_expl.cfg"
+'''
+
+# Deathmatch exploration
+'''
+hidden_nodes = 512
+conv1_filters = 32
+conv2_filters = 64
+replay_memory_size = 1000000
 frame_repeat = 4
 learning_steps_per_epoch = 5000
 test_episodes_per_epoch = 10

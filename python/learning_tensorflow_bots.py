@@ -375,10 +375,10 @@ print("Script path="+script_dir)
 
 #config = "../../examples/config/rocket_basic.cfg"
 #config = "../../examples/config/basic.cfg"
-#config = "../config/simpler_adv.cfg"
-config = "../config/cig_train.cfg"
+config = "../config/simpler_adv.cfg"
+#config = "../config/cig_train.cfg"
 #config = "../../examples/config/my_way_home.cfg"
-server = DoomServer(ScreenResolution.RES_320X240, config, deathmatch=True, visual=True, async=False)
+server = DoomServer(ScreenResolution.RES_320X240, config, deathmatch=False, visual=False, async=False)
 game = server.start_game()
 n = game.get_available_buttons_size()
 actions = [list(a) for a in it.product([0, 1], repeat=n)]
@@ -387,13 +387,13 @@ game.close()
 learner = Learner(available_actions_count=len(actions),
                   frame_repeat=4,
                   epochs=1,
-                  learning_steps_per_epoch=1000,
+                  learning_steps_per_epoch=500,
                   test_episodes_per_epoch=10,
                   reward_exploration=True,
                   resolution=(48, 64),
                   replay_memory_size=10000,
-                  model_savefile=script_dir+"/tf/explorer_model.ckpt")
+                  model_savefile=script_dir+"/tf/simple_adv.ckpt")
 
 learner.learn(server, actions)
 
-learner.play(server, actions, episodes_to_watch=10)
+#learner.play(server, actions, episodes_to_watch=10)
