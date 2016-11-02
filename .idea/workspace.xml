@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c5765c2-e4b2-4448-a6d3-6005411f9d58" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/learn_doom.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/learning3.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/learning_tensorflow.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/learning_tensorflow_bots.py" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/python/learn_doom.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python/tf_doom.py" afterPath="$PROJECT_DIR$/python/tf_doom.py" />
     </list>
     <ignored path="vizdoom-ai.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,14 +36,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tf_doom.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tf_doom.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python/tf_doom.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.78902954">
-              <caret line="431" column="3" selection-start-line="431" selection-start-column="3" selection-end-line="431" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="426" column="25" selection-start-line="426" selection-start-column="25" selection-end-line="426" selection-end-column="25" />
               <folding>
                 <element signature="e#46#77#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="learn_doom.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/python/learn_doom.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6624473">
+              <caret line="432" column="0" selection-start-line="432" selection-start-column="0" selection-end-line="432" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -294,7 +300,7 @@
       <recent name="$PROJECT_DIR$/results/simple_adv" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.learn_doom">
+  <component name="RunManager" selected="Python.learn_doom (1)">
     <configuration default="false" name="learning_tensorflow_bots" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -308,23 +314,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="vizdoom-ai" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/learning_tensorflow_bots.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="plot" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/results/simple_basic_tensorflow" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="vizdoom-ai" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/results/simple_adv/plot_tensorflow.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -376,6 +365,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="vizdoom-ai" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/tf_doom.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="learn_doom (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="vizdoom-ai" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/learn_doom.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -504,18 +510,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.learning_tensorflow_bots" />
-      <item index="1" class="java.lang.String" itemvalue="Python.plot" />
-      <item index="2" class="java.lang.String" itemvalue="Python.plot_tensorflow" />
-      <item index="3" class="java.lang.String" itemvalue="Python.learn_doom" />
-      <item index="4" class="java.lang.String" itemvalue="Python.tf_learn" />
+      <item index="1" class="java.lang.String" itemvalue="Python.plot_tensorflow" />
+      <item index="2" class="java.lang.String" itemvalue="Python.learn_doom" />
+      <item index="3" class="java.lang.String" itemvalue="Python.tf_learn" />
+      <item index="4" class="java.lang.String" itemvalue="Python.learn_doom (1)" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.learn_doom" />
-        <item index="1" class="java.lang.String" itemvalue="Python.tf_learn" />
-        <item index="2" class="java.lang.String" itemvalue="Python.learning_tensorflow_bots" />
-        <item index="3" class="java.lang.String" itemvalue="Python.plot_tensorflow" />
-        <item index="4" class="java.lang.String" itemvalue="Python.plot" />
+        <item index="0" class="java.lang.String" itemvalue="Python.learn_doom (1)" />
+        <item index="1" class="java.lang.String" itemvalue="Python.learn_doom" />
+        <item index="2" class="java.lang.String" itemvalue="Python.tf_learn" />
+        <item index="3" class="java.lang.String" itemvalue="Python.learning_tensorflow_bots" />
+        <item index="4" class="java.lang.String" itemvalue="Python.plot_tensorflow" />
       </list>
     </recent_temporary>
   </component>
@@ -941,11 +947,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/python/tf_doom.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.78902954">
-          <caret line="431" column="3" selection-start-line="431" selection-start-column="3" selection-end-line="431" selection-end-column="3" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="426" column="25" selection-start-line="426" selection-start-column="25" selection-end-line="426" selection-end-column="25" />
           <folding>
             <element signature="e#46#77#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/learn_doom.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6624473">
+          <caret line="432" column="0" selection-start-line="432" selection-start-column="0" selection-end-line="432" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
