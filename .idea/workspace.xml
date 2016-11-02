@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c5765c2-e4b2-4448-a6d3-6005411f9d58" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python/learn_doom.py" afterPath="$PROJECT_DIR$/python/learn_doom.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/learn_doom.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/learning3.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/learning_tensorflow.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/learning_tensorflow_bots.py" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python/tf_doom.py" afterPath="$PROJECT_DIR$/python/tf_doom.py" />
     </list>
     <ignored path="vizdoom-ai.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="learn_doom.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/python/learn_doom.py">
+      <file leaf-file-name="tf_doom.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/python/tf_doom.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.21940929">
-              <caret line="404" column="18" selection-start-line="404" selection-start-column="18" selection-end-line="404" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.78902954">
+              <caret line="431" column="3" selection-start-line="431" selection-start-column="3" selection-end-line="431" selection-end-column="3" />
               <folding>
                 <element signature="e#46#77#0" expanded="true" />
               </folding>
@@ -289,7 +294,7 @@
       <recent name="$PROJECT_DIR$/results/simple_adv" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.tf_learn">
+  <component name="RunManager" selected="Python.learn_doom">
     <configuration default="false" name="learning_tensorflow_bots" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -353,7 +358,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="vizdoom-ai" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/learn_doom.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/tf_doom.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -506,9 +511,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.tf_learn" />
-        <item index="1" class="java.lang.String" itemvalue="Python.learning_tensorflow_bots" />
-        <item index="2" class="java.lang.String" itemvalue="Python.learn_doom" />
+        <item index="0" class="java.lang.String" itemvalue="Python.learn_doom" />
+        <item index="1" class="java.lang.String" itemvalue="Python.tf_learn" />
+        <item index="2" class="java.lang.String" itemvalue="Python.learning_tensorflow_bots" />
         <item index="3" class="java.lang.String" itemvalue="Python.plot_tensorflow" />
         <item index="4" class="java.lang.String" itemvalue="Python.plot" />
       </list>
@@ -601,21 +606,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python/learning_tensorflow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/cig.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/python/learning3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -823,13 +814,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python/learning_tensorflow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6084656">
-          <caret line="111" column="18" selection-start-line="111" selection-start-column="18" selection-end-line="111" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/results/simple_basic_tensorflow/test.dat">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5026455">
@@ -911,24 +895,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python/tf_doom.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6624473">
-          <caret line="440" column="44" selection-start-line="440" selection-start-column="44" selection-end-line="440" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/python/learning_tensorflow_bots.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36708862">
-          <caret line="371" column="0" selection-start-line="371" selection-start-column="0" selection-end-line="371" selection-end-column="0" />
-          <folding>
-            <element signature="e#46#77#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/results/deathmatch_exploration_1/train_results.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -973,10 +939,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python/learn_doom.py">
+    <entry file="file://$PROJECT_DIR$/python/tf_doom.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21940929">
-          <caret line="404" column="18" selection-start-line="404" selection-start-column="18" selection-end-line="404" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.78902954">
+          <caret line="431" column="3" selection-start-line="431" selection-start-column="3" selection-end-line="431" selection-end-column="3" />
           <folding>
             <element signature="e#46#77#0" expanded="true" />
           </folding>

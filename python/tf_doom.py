@@ -23,9 +23,9 @@ class Learner:
                  learning_rate=0.00025,
                  discount_factor=0.99,
                  epochs=20,
-                 hidden_nodes=128,
-                 conv1_filters=8,
-                 conv2_filters=8,
+                 hidden_nodes=4608,
+                 conv1_filters=32,
+                 conv2_filters=64,
                  learning_steps_per_epoch=2000,
                  replay_memory_size=10000,
                  batch_size=64,
@@ -324,6 +324,7 @@ class Learner:
 
         game.close()
 
+
 class DoomServer:
 
     def __init__(self, screen_resolution, config_file_path, deathmatch=False, bots=7, visual=False, async=True):
@@ -375,7 +376,9 @@ class DoomServer:
         game.new_episode()
         return game
 
-# ------------------------------- EXPERIMENTS -------------------------------
+
+# --------------- EXPERIMENTS ---------------
+
 # Test settings
 visual = False
 async = False
@@ -409,13 +412,12 @@ test_episodes_per_epoch = 10
 reward_exploration = False
 epochs = 20
 model_name = "simple_adv"
-deathmatch = False
+death_match = False
 config = "../config/simpler_adv.cfg"
-
 
 # Deathmatch exploration
 '''
-hidden_nodes = 512
+hidden_nodes = 4608
 conv1_filters = 32
 conv2_filters = 64
 replay_memory_size = 10000
@@ -429,18 +431,27 @@ death_match = True
 config = "../config/cig_train.cfg"
 '''
 
-server = DoomServer(ScreenResolution.RES_320X240, config, deathmatch=deathmatch, visual=visual, async=async)
+# ------------------------------------------------------------------
+server = DoomServer(screen_resolution=screen_resolution,
+                    config_file_path=config,
+                    deathmatch=death_match,
+                    visual=visual,
+                    async=async)
+
+print("Starting game to get actions.")
 game = server.start_game()
 n = game.get_available_buttons_size()
 actions = [list(a) for a in it.product([0, 1], repeat=n)]
 game.close()
+print("Game closed again")
 
+print("Creating learner")
 learner = Learner(available_actions_count=len(actions),
                   frame_repeat=frame_repeat,
-                  epochs=epochs,
                   hidden_nodes=hidden_nodes,
                   conv1_filters=conv1_filters,
                   conv2_filters=conv2_filters,
+                  epochs=epochs,
                   learning_steps_per_epoch=learning_steps_per_epoch,
                   test_episodes_per_epoch=test_episodes_per_epoch,
                   reward_exploration=reward_exploration,
@@ -448,6 +459,7 @@ learner = Learner(available_actions_count=len(actions),
                   replay_memory_size=replay_memory_size,
                   model_savefile=script_dir+"/tf/"+model_name+".ckpt")
 
+print("Training learner")
 learner.learn(server, actions)
 
 #learner.play(server, actions, episodes_to_watch=10)
