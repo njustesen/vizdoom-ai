@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c5765c2-e4b2-4448-a6d3-6005411f9d58" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/python/tf_learn.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python/learning_tensorflow_bots.py" afterPath="$PROJECT_DIR$/python/learning_tensorflow_bots.py" />
     </list>
     <ignored path="vizdoom-ai.iws" />
@@ -65,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="learning_tensorflow_bots.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="learning_tensorflow_bots.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/python/learning_tensorflow_bots.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="396" column="51" selection-start-line="396" selection-start-column="51" selection-end-line="396" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.36708862">
+              <caret line="371" column="4" selection-start-line="371" selection-start-column="4" selection-end-line="371" selection-end-column="4" />
               <folding>
                 <element signature="e#46#77#0" expanded="true" />
               </folding>
@@ -77,11 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="learn_doom.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="learn_doom.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python/learn_doom.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.70464134">
-              <caret line="433" column="3" selection-start-line="433" selection-start-column="3" selection-end-line="433" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="434" column="56" selection-start-line="434" selection-start-column="56" selection-end-line="434" selection-end-column="56" />
               <folding>
                 <element signature="e#46#77#0" expanded="true" />
               </folding>
@@ -1024,20 +1025,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python/learning_tensorflow_bots.py">
+    <entry file="file://$PROJECT_DIR$/python/learn_doom.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="396" column="51" selection-start-line="396" selection-start-column="51" selection-end-line="396" selection-end-column="51" />
+          <caret line="434" column="56" selection-start-line="434" selection-start-column="56" selection-end-line="434" selection-end-column="56" />
           <folding>
             <element signature="e#46#77#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python/learn_doom.py">
+    <entry file="file://$PROJECT_DIR$/python/learning_tensorflow_bots.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.70464134">
-          <caret line="433" column="3" selection-start-line="433" selection-start-column="3" selection-end-line="433" selection-end-column="3" />
+        <state vertical-scroll-proportion="0.36708862">
+          <caret line="371" column="4" selection-start-line="371" selection-start-column="4" selection-end-line="371" selection-end-column="4" />
           <folding>
             <element signature="e#46#77#0" expanded="true" />
           </folding>
