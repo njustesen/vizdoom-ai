@@ -421,7 +421,7 @@ reward_exploration = False
 epochs = 10
 model_name = "super_simple_basic"
 death_match = False
-config = "../config/basic_invisible.cfg"
+config = "../config/simpler_basic.cfg"
 
 
 # Simple basic
