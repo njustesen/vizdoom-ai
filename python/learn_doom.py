@@ -410,6 +410,7 @@ p_decay = 1
 bots = 7
 
 # Super simple basic
+'''
 hidden_nodes = 1
 conv1_filters = 1
 conv2_filters = 1
@@ -422,7 +423,7 @@ epochs = 10
 model_name = "super_simple_basic"
 death_match = False
 config = "../config/simpler_basic.cfg"
-
+'''
 
 # Simple basic
 '''
@@ -472,6 +473,22 @@ death_match = False
 config = "../config/simpler_adv_expl.cfg"
 p_decay = 0.90
 '''
+
+# Simple Deathmatch exploration
+hidden_nodes = 32
+conv1_filters = 8
+conv2_filters = 8
+replay_memory_size = 10000
+frame_repeat = 4
+learning_steps_per_epoch = 200
+test_episodes_per_epoch = 1
+reward_exploration = True
+epochs = 20
+model_name = "simple_deathmatch_exploration_no_bots"
+death_match = True
+bots = 0
+config = "../config/cig_train_expl.cfg"
+p_decay = 0.90
 
 # Deathmatch exploration
 '''
