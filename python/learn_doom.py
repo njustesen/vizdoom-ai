@@ -475,9 +475,9 @@ p_decay = 0.90
 '''
 
 # Simple Deathmatch exploration
-hidden_nodes = 32
-conv1_filters = 8
-conv2_filters = 8
+hidden_nodes = 512
+conv1_filters = 32
+conv2_filters = 64
 replay_memory_size = 1000000
 frame_repeat = 4
 learning_steps_per_epoch = 200
