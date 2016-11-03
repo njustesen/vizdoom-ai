@@ -56,11 +56,14 @@ class Learner:
         self.positions = []
 
         # Create replay memory which will store the transitions
+        print("Creating replay memory")
         self.memory = er.ReplayMemory(capacity=replay_memory_size, resolution=resolution)
 
         # Start TF session
+        print("Starting session")
         self.session = tf.Session()
 
+        print("Creating model")
         # Create the input variables
         s1_ = tf.placeholder(tf.float32, [None] + list(self.resolution) + [1], name="State")
         a_ = tf.placeholder(tf.int32, [None], name="Action")
@@ -117,6 +120,8 @@ class Learner:
         self.fn_learn = function_learn
         self.fn_get_q_values = function_get_q_values
         self.fn_get_best_action = function_simple_get_best_action
+
+        print("Model created")
 
     def learn_from_memory(self):
         """ Learns from a single transition (making use of replay memory).
@@ -475,7 +480,7 @@ p_decay = 0.90
 '''
 
 # Simple Deathmatch exploration
-hidden_nodes = 512
+hidden_nodes = 1
 conv1_filters = 32
 conv2_filters = 64
 replay_memory_size = 1000000
