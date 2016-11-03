@@ -29,12 +29,9 @@ class Learner:
                  batch_size=64,
                  test_episodes_per_epoch=2,
                  frame_repeat=12,
-                 update_every=4,
                  p_decay=0.95,
                  reward_exploration=False,
                  resolution=(30, 45),
-                 sequence_length=10,
-                 observation_history=4,
                  model_savefile="/tmp/model.ckpt",
                  save_model=True,
                  load_model=False):
@@ -54,9 +51,6 @@ class Learner:
         self.save_model = save_model
         self.load_model = load_model
         self.reward_exploration = reward_exploration
-        self.sequence_length = sequence_length
-        self.observation_history = observation_history
-        self.update_every = update_every
 
         # Positions traversed during an episode
         self.positions = []
@@ -109,9 +103,6 @@ class Learner:
         # Update the parameters according to the computed gradient using RMSProp.
         train_step = optimizer.minimize(loss)
 
-        def reshape_state(state):
-            return state.reshape([1, self.resolution[0], self.resolution[1], 1])
-
         def function_learn(s1, target_q):
             feed_dict = {s1_: s1, target_q_: target_q}
             l, _ = self.session.run([loss, train_step], feed_dict=feed_dict)
@@ -123,15 +114,11 @@ class Learner:
         def function_get_best_action(state):
             return self.session.run(best_a, feed_dict={s1_: state})
 
-        # For single states
-        def function_simple_get_q_values(state):
-            return function_get_q_values(reshape_state(state))[0]
-
         def function_simple_get_best_action(state):
-            return function_get_best_action(reshape_state(state))[0]
+            return function_get_best_action(state.reshape([1, self.resolution[0], self.resolution[1], 1]))[0]
 
         self.fn_learn = function_learn
-        self.fn_get_q_values = function_simple_get_q_values
+        self.fn_get_q_values = function_get_q_values
         self.fn_get_best_action = function_simple_get_best_action
 
         print("Model created")
@@ -142,31 +129,14 @@ class Learner:
 
         # Get a random minibatch from the replay memory and learns from it.
         if self.memory.size > self.batch_size:
+            s1, a, s2, isterminal, r = self.memory.get_sample(self.batch_size)
 
-            s1_prop = []
-            target_q_prop = []
-
-            while len(s1_prop) < self.batch_size:
-
-                s1, a, s2, isterminal, r = self.memory.get_sequence(self.sequence_length)
-
-                for i in range(self.sequence_length):
-                    if i < self.observation_history:
-                        self.fn_get_best_action(s1[i])
-                    else:
-
-                        q2 = max(self.fn_get_q_values(s2[i]))
-                        target_q = self.fn_get_q_values(s1[i])
-                        # target differs from q only for the selected action. The following means:
-                        # target_Q(s,a) = r + gamma * max Q(s2,_) if isterminal else r
-                        #target_q[np.arange(target_q.shape[0]), a[i]] = r[i] + self.discount_factor * (1 - isterminal[i]) * q2
-                        target_q[a[i]] = r[i] + self.discount_factor * (1 - isterminal[i]) * q2
-                        target_q_prop.append(target_q)
-
-                # TODO: Maybe not last
-                s1_prop.extend(s1[self.sequence_length:])
-
-            self.fn_learn(s1_prop, target_q_prop)
+            q2 = np.max(self.fn_get_q_values(s2), axis=1)
+            target_q = self.fn_get_q_values(s1)
+            # target differs from q only for the selected action. The following means:
+            # target_Q(s,a) = r + gamma * max Q(s2,_) if isterminal else r
+            target_q[np.arange(target_q.shape[0]), a] = r + self.discount_factor * (1 - isterminal) * q2
+            self.fn_learn(s1, target_q)
 
     def exploration_rate(self, epoch, linear=False):
         """# Define exploration rate change over time"""
@@ -187,7 +157,7 @@ class Learner:
         else:
             return end_eps
 
-    def perform_learning_step(self, game, actions, epoch, reward_exploration, learning_step):
+    def perform_learning_step(self, game, actions, epoch, reward_exploration):
         """ Makes an action according to eps-greedy policy, observes the result
         (next state, reward) and learns from the transition"""
 
@@ -211,8 +181,7 @@ class Learner:
         # Remember the transition that was just experienced.
         self.memory.add_transition(s1, a, s2, isterminal, reward)
 
-        if learning_step % self.update_every == 0:
-            self.learn_from_memory()
+        self.learn_from_memory()
 
         return reward
 
@@ -301,7 +270,7 @@ class Learner:
                     self.positions = []
                     score = 0
 
-                reward = self.perform_learning_step(game, actions, epoch, self.reward_exploration, learning_step)
+                reward = self.perform_learning_step(game, actions, epoch, self.reward_exploration)
                 if self.reward_exploration:
                     score += reward
 
@@ -440,13 +409,10 @@ visual = False
 async = False
 screen_resolution = ScreenResolution.RES_320X240
 scaled_resolution = (48, 64)
-batch_size = 64
-sequence_length = batch_size
 
 # Override these if used
 p_decay = 1
 bots = 7
-observation_history = 0
 
 # Super simple basic
 '''
@@ -465,6 +431,7 @@ config = "../config/simpler_basic.cfg"
 '''
 
 # Simple basic
+'''
 hidden_nodes = 128
 conv1_filters = 8
 conv2_filters = 8
@@ -477,6 +444,7 @@ epochs = 20
 model_name = "simple_basic"
 death_match = False
 config = "../config/simpler_basic.cfg"
+'''
 
 # Simple advanced
 '''
@@ -512,7 +480,6 @@ p_decay = 0.90
 '''
 
 # Deathmatch exploration
-'''
 hidden_nodes = 512
 conv1_filters = 32
 conv2_filters = 64
@@ -527,7 +494,6 @@ death_match = True
 bots = 0
 config = "../config/cig_train_expl.cfg"
 p_decay = 0.90
-'''
 
 # ------------------------------------------------------------------
 server = DoomServer(screen_resolution=screen_resolution,
@@ -554,9 +520,6 @@ learner = Learner(available_actions_count=len(actions),
                   conv1_filters=conv1_filters,
                   conv2_filters=conv2_filters,
                   epochs=epochs,
-                  batch_size=batch_size,
-                  sequence_length=sequence_length,
-                  observation_history=observation_history,
                   learning_steps_per_epoch=learning_steps_per_epoch,
                   test_episodes_per_epoch=test_episodes_per_epoch,
                   reward_exploration=reward_exploration,

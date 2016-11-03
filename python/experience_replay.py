@@ -1,5 +1,6 @@
-from random import sample
+from random import *
 import numpy as np
+
 
 class ReplayMemory:
     def __init__(self, capacity, resolution):
@@ -29,4 +30,55 @@ class ReplayMemory:
     def get_sample(self, sample_size):
         i = sample(range(0, self.size), sample_size)
         return self.s1[i], self.a[i], self.s2[i], self.isterminal[i], self.r[i]
+
+    def get_sequence(self, n):
+        start = int(random() * (self.size - n))
+        end = min(start + n, self.size)
+        return self.s1[start:end], self.a[start:end], self.s2[start:end], self.isterminal[start:end], self.r[start:end]
+
+
+class Episode:
+    def __init__(self):
+        self.s1 = []
+        self.s2 = []
+        self.a = []
+        self.r = []
+        self.isterminal = []
+        self.length = 0
+
+    def add_transition(self, s1, action, s2, isterminal, reward):
+        self.s1.append(s1)
+        self.s2.append(s2)
+        self.a.append(action)
+        self.r.append(reward)
+        self.isterminal.append(isterminal)
+        self.length += 1
+
+
+class SequentialReplayMemory:
+    def __init__(self, capacity, sequence_length):
+        self.episodes = []
+        self.capacity = capacity
+        self.size = 0
+        self.pos = 0
+        self.sequence_length = sequence_length
+
+    def add_episodes(self, episode):
+        if episode.length < self.sequence_length:
+            return
+        if len(self.episodes) >= self.capacity:
+            self.pos = (self.pos + 1) % self.capacity
+            self.episodes[self.pos] = episode
+        else:
+            self.episodes.append(episode)
+        self.size = min(self.size + 1, self.capacity)
+
+    def get_random_episode(self):
+        return choice(self.episodes)
+
+    def get_sequence(self):
+        e = choice(self.episodes)
+        start = int(random() * (e.length - self.sequence_length))
+        end = min(start + self.sequence_length, e.length)
+        return e.s1[start:end], e.a[start:end], e.s2[start:end], e.isterminal[start:end], e.r[start:end]
 

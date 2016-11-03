@@ -1,2 +1,2 @@
-model_checkpoint_path: "/home/niels/njustesen/ViZDoom/vizdoom-ai/python/tf/simple_exploration.ckpt"
-all_model_checkpoint_paths: "/home/niels/njustesen/ViZDoom/vizdoom-ai/python/tf/simple_exploration.ckpt"
+model_checkpoint_path: "/Users/noju/Documents/ViZDoom/vizdoom-ai/python/tf/simple_basic.ckpt"
+all_model_checkpoint_paths: "/Users/noju/Documents/ViZDoom/vizdoom-ai/python/tf/simple_basic.ckpt"

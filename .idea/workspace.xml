@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c5765c2-e4b2-4448-a6d3-6005411f9d58" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/python/learn_doom_hidden.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python/experience_replay.py" afterPath="$PROJECT_DIR$/python/experience_replay.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python/learn_doom.py" afterPath="$PROJECT_DIR$/python/learn_doom.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python/test_results.txt" afterPath="$PROJECT_DIR$/python/test_results.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python/tf/checkpoint" afterPath="$PROJECT_DIR$/python/tf/checkpoint" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python/train_results.txt" afterPath="$PROJECT_DIR$/python/train_results.txt" />
     </list>
     <ignored path="vizdoom-ai.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -17,52 +23,48 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="t.py" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/python/t.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="0.6122449">
+                    <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="vizdoom-ai" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="plot_tensorflow.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/results/plot_tensorflow.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="train.dat" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/results/simple_exploration_2/train.dat">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test.dat" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/results/simple_exploration_2/test.dat">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="49" column="39" selection-start-line="49" selection-start-column="39" selection-end-line="49" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="learn_doom.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="learn_doom.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python/learn_doom.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.29085872">
-              <caret line="482" column="17" selection-start-line="482" selection-start-column="17" selection-end-line="482" selection-end-column="17" />
-              <folding>
-                <element signature="e#46#77#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="-6.5925927">
+              <caret line="158" column="62" selection-start-line="0" selection-start-column="0" selection-end-line="570" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="learn_doom_hidden.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/python/learn_doom_hidden.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.36911765">
+              <caret line="488" column="28" selection-start-line="488" selection-start-column="28" selection-end-line="488" selection-end-column="28" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -92,16 +94,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="0" column="24" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="2277" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test.dat" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/results/simple_exploration/test.dat">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -153,8 +145,6 @@
         <option value="$PROJECT_DIR$/python/ReplayMemory.py" />
         <option value="$PROJECT_DIR$/python/replay_memory.py" />
         <option value="$PROJECT_DIR$/python/learning_theano.py" />
-        <option value="$PROJECT_DIR$/python/experience_replay.py" />
-        <option value="$PROJECT_DIR$/python/t.py" />
         <option value="$PROJECT_DIR$/python/learning_tensorflow.py" />
         <option value="$PROJECT_DIR$/python/DoomGradientAgent.py" />
         <option value="$PROJECT_DIR$/python/gradient_learning.py" />
@@ -187,14 +177,17 @@
         <option value="$PROJECT_DIR$/results/simple_exploration_2/test.dat" />
         <option value="$PROJECT_DIR$/results/plot_tensorflow.py" />
         <option value="$PROJECT_DIR$/python/basic_invisible.py" />
+        <option value="$PROJECT_DIR$/python/t.py" />
+        <option value="$PROJECT_DIR$/python/experience_replay.py" />
         <option value="$PROJECT_DIR$/python/learn_doom.py" />
+        <option value="$PROJECT_DIR$/python/learn_doom_hidden.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-3839" />
+    <option name="x" value="-3801" />
     <option name="y" value="-257" />
-    <option name="width" value="1737" />
+    <option name="width" value="1881" />
     <option name="height" value="1053" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -309,24 +302,7 @@
       <recent name="$PROJECT_DIR$/results/simple_adv" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.learn_doom (1)">
-    <configuration default="false" name="learning_tensorflow_bots" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="vizdoom-ai" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/learning_tensorflow_bots.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.learn_doom_hidden">
     <configuration default="false" name="plot_tensorflow" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -391,6 +367,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="vizdoom-ai" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/buffers.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="learn_doom_hidden" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="vizdoom-ai" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/learn_doom_hidden.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -518,19 +511,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.learning_tensorflow_bots" />
-      <item index="1" class="java.lang.String" itemvalue="Python.plot_tensorflow" />
-      <item index="2" class="java.lang.String" itemvalue="Python.learn_doom (1)" />
-      <item index="3" class="java.lang.String" itemvalue="Python.labels" />
-      <item index="4" class="java.lang.String" itemvalue="Python.buffers" />
+      <item index="0" class="java.lang.String" itemvalue="Python.plot_tensorflow" />
+      <item index="1" class="java.lang.String" itemvalue="Python.learn_doom (1)" />
+      <item index="2" class="java.lang.String" itemvalue="Python.labels" />
+      <item index="3" class="java.lang.String" itemvalue="Python.buffers" />
+      <item index="4" class="java.lang.String" itemvalue="Python.learn_doom_hidden" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.learn_doom (1)" />
-        <item index="1" class="java.lang.String" itemvalue="Python.plot_tensorflow" />
-        <item index="2" class="java.lang.String" itemvalue="Python.buffers" />
-        <item index="3" class="java.lang.String" itemvalue="Python.labels" />
-        <item index="4" class="java.lang.String" itemvalue="Python.learning_tensorflow_bots" />
+        <item index="0" class="java.lang.String" itemvalue="Python.learn_doom_hidden" />
+        <item index="1" class="java.lang.String" itemvalue="Python.learn_doom (1)" />
+        <item index="2" class="java.lang.String" itemvalue="Python.plot_tensorflow" />
+        <item index="3" class="java.lang.String" itemvalue="Python.buffers" />
+        <item index="4" class="java.lang.String" itemvalue="Python.labels" />
       </list>
     </recent_temporary>
   </component>
@@ -548,19 +541,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-3839" y="-257" width="1737" height="1053" extended-state="0" />
+    <frame x="-3801" y="-257" width="1881" height="1053" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22261073" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20537634" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27159208" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23517169" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24947146" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21956296" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29136315" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -586,13 +579,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/python/learn_doom.py</url>
-          <line>531</line>
-          <option name="timeStamp" value="76" />
+          <line>166</line>
+          <option name="timeStamp" value="93" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/python/learn_doom.py</url>
-          <line>229</line>
-          <option name="timeStamp" value="78" />
+          <line>153</line>
+          <option name="timeStamp" value="102" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -602,43 +595,19 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="79" />
+      <option name="time" value="103" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="conv2.get_shape()" language="Python" />
-        <watch expression="conv2.get_shape()" language="Python" />
-        <watch expression="conv2_flat.get_shape()" language="Python" />
-        <watch expression="fc1.get_shape()" language="Python" />
-        <watch expression="q.get_shape()" language="Python" />
-        <watch expression="conv1.input_shape" language="Python" />
-        <watch expression="conv1.output_shape" language="Python" />
-        <watch expression="conv2.input_shape" language="Python" />
-        <watch expression="conv2.output_shape" language="Python" />
-        <watch expression="fc1.input_shape" language="Python" />
-        <watch expression="fc1.output_shape" language="Python" />
-        <watch expression="rec.input_shape" language="Python" />
-        <watch expression="rec.output_shape" language="Python" />
-        <watch expression="old_ffn.shape" language="Python" />
-        <watch expression="old_ffn.reshape([-1, 128]).shape" language="Python" />
+        <watch expression="state.shape" language="Python" />
+        <watch expression="s2[i].reshape([1, self.resolution[0], self.resolution[1], 1])" language="Python" />
+        <watch expression="s2[i].reshape([1, self.resolution[0], self.resolution[1], 1]).shape" language="Python" />
+        <watch expression="s2.shape" language="Python" />
+        <watch expression="a[i]" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///usr/local/lib/python2.7/site-packages/skimage/transform/_warps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.7256637">
-          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/simpler_basic.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/simpler_adv.cfg">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -686,13 +655,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5555556">
           <caret line="22" column="60" selection-start-line="22" selection-start-column="60" selection-end-line="22" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/python/t.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.9100529">
-          <caret line="240" column="21" selection-start-line="240" selection-start-column="21" selection-end-line="240" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -762,16 +724,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="107" selection-start-line="0" selection-start-column="107" selection-end-line="0" selection-end-column="107" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/python/experience_replay.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.625">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -895,7 +847,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="44" column="38" selection-start-line="44" selection-start-column="38" selection-end-line="44" selection-end-column="38" />
           <folding>
-            <element signature="e#46#77#0" expanded="true" />
+            <element signature="e#46#77#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -962,14 +914,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/cig_train_expl.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.119521916">
-          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/results/simple_exploration_2/test_results.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -986,32 +930,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/results/simple_exploration_2/train.dat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/results/simple_exploration_2/test.dat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="39" selection-start-line="49" selection-start-column="39" selection-end-line="49" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/results/plot_tensorflow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/python/basic_invisible.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1020,13 +938,79 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/results/plot_tensorflow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.51339287">
+          <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#18#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results/simple_exploration_2/train.dat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.22767857">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results/simple_exploration_2/test.dat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8660714">
+          <caret line="49" column="39" selection-start-line="49" selection-start-column="39" selection-end-line="49" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/cig_train_expl.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13119534">
+          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/experience_replay.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33236152">
+          <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/site-packages/tensorflow/python/client/session.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33239037">
+          <caret line="893" column="0" selection-start-line="893" selection-start-column="0" selection-end-line="893" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/t.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6122449">
+          <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/python/learn_doom.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29085872">
-          <caret line="482" column="17" selection-start-line="482" selection-start-column="17" selection-end-line="482" selection-end-column="17" />
-          <folding>
-            <element signature="e#46#77#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-6.5925927">
+          <caret line="158" column="62" selection-start-line="0" selection-start-column="0" selection-end-line="570" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/learn_doom_hidden.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36911765">
+          <caret line="488" column="28" selection-start-line="488" selection-start-column="28" selection-end-line="488" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
