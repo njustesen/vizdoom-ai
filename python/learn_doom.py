@@ -480,7 +480,7 @@ p_decay = 0.90
 '''
 
 # Simple Deathmatch exploration
-hidden_nodes = 1
+hidden_nodes = 512
 conv1_filters = 32
 conv2_filters = 64
 replay_memory_size = 1000000
