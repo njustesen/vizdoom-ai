@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c5765c2-e4b2-4448-a6d3-6005411f9d58" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/python/basic_invisible.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/plot_tensorflow.py" afterPath="$PROJECT_DIR$/results/plot_tensorflow.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python/learn_doom.py" afterPath="$PROJECT_DIR$/python/learn_doom.py" />
     </list>
     <ignored path="vizdoom-ai.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -56,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="learn_doom.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="learn_doom.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/python/learn_doom.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="502" column="66" selection-start-line="502" selection-start-column="66" selection-end-line="502" selection-end-column="66" />
+            <state vertical-scroll-proportion="0.4642857">
+              <caret line="412" column="0" selection-start-line="412" selection-start-column="0" selection-end-line="412" selection-end-column="0" />
               <folding>
                 <element signature="e#46#77#0" expanded="true" />
               </folding>
@@ -68,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="basic_invisible.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="basic_invisible.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python/basic_invisible.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24553572">
-              <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="84" column="29" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -185,10 +184,10 @@
         <option value="$PROJECT_DIR$/python/train_results.txt" />
         <option value="$PROJECT_DIR$/python/test_results.txt" />
         <option value="$PROJECT_DIR$/python/buffers.py" />
-        <option value="$PROJECT_DIR$/python/learn_doom.py" />
         <option value="$PROJECT_DIR$/results/simple_exploration_2/test.dat" />
         <option value="$PROJECT_DIR$/results/plot_tensorflow.py" />
         <option value="$PROJECT_DIR$/python/basic_invisible.py" />
+        <option value="$PROJECT_DIR$/python/learn_doom.py" />
       </list>
     </option>
   </component>
@@ -1001,21 +1000,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python/learn_doom.py">
+    <entry file="file://$PROJECT_DIR$/python/basic_invisible.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="502" column="66" selection-start-line="502" selection-start-column="66" selection-end-line="502" selection-end-column="66" />
-          <folding>
-            <element signature="e#46#77#0" expanded="true" />
-          </folding>
+          <caret line="84" column="29" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python/basic_invisible.py">
+    <entry file="file://$PROJECT_DIR$/python/learn_doom.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24553572">
-          <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.4642857">
+          <caret line="412" column="0" selection-start-line="412" selection-start-column="0" selection-end-line="412" selection-end-column="0" />
+          <folding>
+            <element signature="e#46#77#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

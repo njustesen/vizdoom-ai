@@ -409,6 +409,21 @@ scaled_resolution = (48, 64)
 p_decay = 1
 bots = 7
 
+# Super simple basic
+hidden_nodes = 1
+conv1_filters = 1
+conv2_filters = 1
+replay_memory_size = 10
+frame_repeat = 12
+learning_steps_per_epoch = 100
+test_episodes_per_epoch = 1
+reward_exploration = False
+epochs = 10
+model_name = "super_simple_basic"
+death_match = False
+config = "../config/basic_invisible.cfg"
+
+
 # Simple basic
 '''
 hidden_nodes = 128
@@ -459,6 +474,7 @@ p_decay = 0.90
 '''
 
 # Deathmatch exploration
+'''
 hidden_nodes = 512
 conv1_filters = 32
 conv2_filters = 64
@@ -473,6 +489,8 @@ death_match = True
 bots = 0
 config = "../config/cig_train_expl.cfg"
 p_decay = 0.90
+'''
+
 
 # ------------------------------------------------------------------
 server = DoomServer(screen_resolution=screen_resolution,
