@@ -61,7 +61,9 @@ class Learner:
 
         # Start TF session
         print("Starting session")
-        self.session = tf.Session()
+        #gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.8)
+        #self.session = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
+        #self.session = tf.Session()
 
         print("Creating model")
         # Create the input variables
