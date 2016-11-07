@@ -1,2 +1,2 @@
-model_checkpoint_path: "/Users/noju/Documents/ViZDoom/vizdoom-ai/python/tf/simple_basic.ckpt"
-all_model_checkpoint_paths: "/Users/noju/Documents/ViZDoom/vizdoom-ai/python/tf/simple_basic.ckpt"
+model_checkpoint_path: "/Users/noju/Documents/ViZDoom/vizdoom-ai/python/tf/deathmatch_exploration_no_bots.ckpt"
+all_model_checkpoint_paths: "/Users/noju/Documents/ViZDoom/vizdoom-ai/python/tf/deathmatch_exploration_no_bots.ckpt"
