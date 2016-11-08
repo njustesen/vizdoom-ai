@@ -409,7 +409,15 @@ class DoomServer:
             game.send_game_command("addbot")
 
     def start_game(self, game):
-        game.new_episode()
+        started = False
+        while not started:
+            try:
+                game.new_episode()
+            except:
+                print("Failed to restart ViZDoom!")
+            else:
+                started = True
+
         if self.deathmatch:
             self.addBots(game)
 
