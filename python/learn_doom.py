@@ -70,10 +70,15 @@ class Learner:
         self.session = tf.Session()
 
         print("Creating model")
-        # Create the input variables
-        s1_ = tf.placeholder(tf.float32, [None] + list(self.resolution) + [1], name="State")
-        a_ = tf.placeholder(tf.int32, [None], name="Action")
+
+        # Input - [batch_size, time, x, y, channels]
+        s1_ = tf.placeholder(tf.float32, [None] + [None] + list(self.resolution) + [1], name="State")
+        timeteps = tf.placeholder(tf.int32, [])
         target_q_ = tf.placeholder(tf.float32, [None, available_actions_count], name="TargetQ")
+
+        # Use channels for time steps
+        # Reshape [time * batch, resolution, channels]
+        s1_reshaped = s1_.reshape(s1_, [None] + list(self.resolution))
 
         # Add 2 convolutional layers with ReLu activation
         conv1 = tf.contrib.layers.convolution2d(s1_, num_outputs=conv1_filters, kernel_size=[6, 6], stride=[3, 3],
@@ -84,6 +89,7 @@ class Learner:
                                         activation_fn=tf.nn.relu,
                                         weights_initializer=tf.contrib.layers.xavier_initializer_conv2d(),
                                         biases_initializer=tf.constant_initializer(0.1))
+
         conv2_flat = tf.contrib.layers.flatten(conv2)
 
         #conv2_flat = tf.contrib.layers.DropoutLayer(conv2_flat, keep=0.5, name='dropout')
@@ -94,11 +100,18 @@ class Learner:
 
         #fc1 = tf.contrib.layers.DropoutLayer(fc1, keep=0.5, name='dropout')
 
-        #gru = tf.tensorlayer.RNNLayer(fc1, cell_fn=tf.nn.rnn_cell.GRUCell, n_hidden=128, n_steps=1, return_seq_2d=False)
+        # Get the shape from fc1
+        # [batch_size, time, ??]
+        fc1_reshaped = fc1.reshape(s1_, [None] + [None] + fc1.get_output_shape())
 
-        #gru = tf.contrib.layers.DropoutLayer(gru, keep=0.5, name='dropout')
+        num_units = 512
+        cell = tf.nn.rnn_cell.GRUCell(num_units)
+        init_state = cell.zero_state(batch_size, tf.float32)
+        rnn_outputs, final_state = tf.nn.dynamic_rnn(cell, fc1_reshaped, initial_state=init_state)
 
-        q = tf.contrib.layers.fully_connected(fc1, num_outputs=self.available_actions_count, activation_fn=None,
+        # Reshape?
+
+        q = tf.contrib.layers.fully_connected(rnn_outputs, num_outputs=self.available_actions_count, activation_fn=None,
                                       weights_initializer=tf.contrib.layers.xavier_initializer(),
                                       biases_initializer=tf.constant_initializer(0.1))
         best_a = tf.argmax(q, 1)
@@ -425,11 +438,10 @@ bots = 7
 observation_history = 0
 
 # Super simple basic
-'''
-hidden_nodes = 1
-conv1_filters = 1
-conv2_filters = 1
-replay_memory_size = 10
+hidden_nodes = 4
+conv1_filters = 2
+conv2_filters = 4
+replay_memory_size = 100
 frame_repeat = 12
 learning_steps_per_epoch = 100
 test_episodes_per_epoch = 1
@@ -438,7 +450,6 @@ epochs = 10
 model_name = "super_simple_basic"
 death_match = False
 config = "../config/simpler_basic.cfg"
-'''
 
 # Simple basic
 '''
@@ -490,6 +501,7 @@ p_decay = 0.90
 '''
 
 # Deathmatch exploration
+'''
 hidden_nodes = 512
 conv1_filters = 32
 conv2_filters = 64
@@ -504,6 +516,7 @@ death_match = True
 bots = 0
 config = "../config/cig_train_expl.cfg"
 p_decay = 0.90
+'''
 
 # ------------------------------------------------------------------
 server = DoomServer(screen_resolution=screen_resolution,
