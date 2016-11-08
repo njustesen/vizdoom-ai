@@ -250,14 +250,13 @@ class Learner:
         train_results = []
         test_results = []
 
-        game = server.start_game()
         for epoch in range(self.epochs):
             print("\nEpoch %d\n-------" % (epoch + 1))
             if epoch < self.start_from:
                 continue;
+            game = server.new_game()
             train_episodes_finished = 0
             train_scores = []
-            game = server.restart_game(game)
             print("Training...")
             eps = self.exploration_rate(epoch, linear=True)
             print("Epsilon: " + str(eps))
@@ -276,10 +275,11 @@ class Learner:
                     if not self.reward_exploration:
                         score = game.get_total_reward()
                     train_scores.append(score)
-                    game = server.restart_game(game)
                     train_episodes_finished += 1
                     self.positions = []
                     score = 0
+                    game.close()
+                    game = server.new_game()
 
                 reward = self.perform_learning_step(game, actions, epoch, self.reward_exploration, learning_step)
                 if self.reward_exploration:
@@ -295,9 +295,10 @@ class Learner:
             train_results.append((epoch, train_scores.mean(), train_scores.std()))
 
             print("\nTesting...")
+            game.close()
+            game = server.new_game()
             test_scores = []
             for test_episode in trange(self.test_episodes_per_epoch):
-                game = server.restart_game(game)
                 self.positions = []
                 score = 0
                 while not game.is_episode_finished():
@@ -309,6 +310,8 @@ class Learner:
                 if not self.reward_exploration:
                     score = game.get_total_reward()
                 test_scores.append(score)
+                game.close()
+                game = server.new_game()
 
             test_scores = np.array(test_scores)
             print("Results: mean: %.1f±%.1f," % (
@@ -337,10 +340,9 @@ class Learner:
         print("Loading model from: ", self.model_savefile)
         saver = tf.train.Saver()
         saver.restore(self.session, self.model_savefile)
-        game = server.start_game()
 
         for _ in range(episodes_to_watch):
-            game = server.restart_game(game)
+            game = server.new_game()
             score = 0
             while not game.is_episode_finished():
                 state = self.preprocess(game.get_state().screen_buffer)
@@ -353,13 +355,13 @@ class Learner:
                 if self.reward_exploration:
                     score += self.position_reward(game, append=True)
 
+            game.close()
+
             # Sleep between episodes
             sleep(1.0)
             if not self.reward_exploration:
                 score = game.get_total_reward()
             print("Total score: ", score)
-
-        game.close()
 
 
 class DoomServer:
@@ -372,7 +374,7 @@ class DoomServer:
         self.async = async
         self.config_file_path = config_file_path
 
-    def start_game(self):
+    def new_game(self):
         print("Initializing doom...")
         game = DoomGame()
         game.load_config(self.config_file_path)
@@ -396,22 +398,20 @@ class DoomServer:
 
         game.init()
 
-        if self.deathmatch:
-            game.send_game_command("removebots")
-            for i in range(self.bots):
-                game.send_game_command("addbot")
-
-        #self.game.new_episode()
+        self.start_game(game)
 
         print("Doom initialized.")
         return game
 
-    def restart_game(self, game):
-        if self.deathmatch:
-            game.close()
-            return self.start_game()
+    def addBots(self, game):
+        game.send_game_command("removebots")
+        for i in range(self.bots):
+            game.send_game_command("addbot")
+
+    def start_game(self, game):
         game.new_episode()
-        return game
+        if self.deathmatch:
+            self.addBots(game)
 
 
 # --------------- EXPERIMENTS ---------------
@@ -494,6 +494,24 @@ config = "../config/simpler_adv_expl.cfg"
 p_decay = 0.90
 '''
 
+# Deathmatch simple exploration
+'''
+hidden_nodes = 12
+conv1_filters = 4
+conv2_filters = 8
+replay_memory_size = 1000
+frame_repeat = 4
+learning_steps_per_epoch = 5000
+test_episodes_per_epoch = 10
+reward_exploration = True
+epochs = 10
+model_name = "deathmatch_exploration_simple_no_bots"
+death_match = True
+#bots = 0
+config = "../config/cig_train_expl.cfg"
+p_decay = 0.90
+'''
+
 # Deathmatch exploration
 hidden_nodes = 512
 conv1_filters = 32
@@ -519,7 +537,7 @@ server = DoomServer(screen_resolution=screen_resolution,
                     bots=bots)
 
 print("Starting game to get actions.")
-game = server.start_game()
+game = server.new_game()
 n = game.get_available_buttons_size()
 actions = [list(a) for a in it.product([0, 1], repeat=n)]
 game.close()
@@ -531,8 +549,8 @@ print("Script path="+script_dir)
 print("Creating learner")
 
 # Resume
-start_from = 62
-load_model = True
+start_from = 0
+load_model = False
 
 learner = Learner(available_actions_count=len(actions),
                   frame_repeat=frame_repeat,

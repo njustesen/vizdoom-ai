@@ -71,12 +71,14 @@ class Learner:
 
         print("Creating model")
 
-        # Input - [batch_size, time, x, y]
-        s1_ = tf.placeholder(tf.float32, [None] + [None] + list(self.resolution), name="State")
+        # Input - [batch_size, time, x, y, channels]
+        s1_ = tf.placeholder(tf.float32, [None] + [None] + list(self.resolution) + [1], name="State")
+        timeteps = tf.placeholder(tf.int32, [])
         target_q_ = tf.placeholder(tf.float32, [None, available_actions_count], name="TargetQ")
 
-        # Reshape time * batch
-        s1_resphaped = s1_.reshape(s1_, [])
+        # Use channels for time steps
+        # Reshape [time * batch, resolution, channels]
+        s1_reshaped = s1_.reshape(s1_, [None] + list(self.resolution))
 
         # Add 2 convolutional layers with ReLu activation
         conv1 = tf.contrib.layers.convolution2d(s1_, num_outputs=conv1_filters, kernel_size=[6, 6], stride=[3, 3],
@@ -98,17 +100,16 @@ class Learner:
 
         #fc1 = tf.contrib.layers.DropoutLayer(fc1, keep=0.5, name='dropout')
 
+        # Get the shape from fc1
+        # [batch_size, time, ??]
+        fc1_reshaped = fc1.reshape(s1_, [None] + [None] + fc1.get_output_shape())
+
         num_units = 512
         cell = tf.nn.rnn_cell.GRUCell(num_units)
         init_state = cell.zero_state(batch_size, tf.float32)
-        rnn_outputs, final_state = tf.nn.dynamic_rnn(cell, fc1, initial_state=init_state)
+        rnn_outputs, final_state = tf.nn.dynamic_rnn(cell, fc1_reshaped, initial_state=init_state)
 
-        # Reshape
-        #rnn_outputs = tf.reshape(rnn_outputs, [-1, state_size])
-
-        #gru = tf.tensorlayer.RNNLayer(fc1, cell_fn=tf.nn.rnn_cell.GRUCell, n_hidden=128, n_steps=1, return_seq_2d=False)
-
-        #gru = tf.contrib.layers.DropoutLayer(gru, keep=0.5, name='dropout')
+        # Reshape?
 
         q = tf.contrib.layers.fully_connected(rnn_outputs, num_outputs=self.available_actions_count, activation_fn=None,
                                       weights_initializer=tf.contrib.layers.xavier_initializer(),
