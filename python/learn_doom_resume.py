@@ -425,7 +425,7 @@ class DoomServer:
 # --------------- EXPERIMENTS ---------------
 
 # Test settings
-visual = False
+visual = True
 async = False
 screen_resolution = ScreenResolution.RES_320X240
 scaled_resolution = (48, 64)
@@ -521,6 +521,7 @@ p_decay = 0.90
 '''
 
 # Deathmatch exploration
+'''
 hidden_nodes = 512
 conv1_filters = 32
 conv2_filters = 64
@@ -535,6 +536,22 @@ death_match = True
 bots = 0
 config = "../config/cig_train_expl.cfg"
 p_decay = 0.90
+'''
+
+# Simple adv replay
+hidden_nodes = 512
+conv1_filters = 32
+conv2_filters = 64
+replay_memory_size = 1000000
+frame_repeat = 1
+learning_steps_per_epoch = 2000
+test_episodes_per_epoch = 10
+reward_exploration = False
+epochs = 20
+model_name = "simple_adv"
+death_match = False
+config = "../config/simpler_adv.cfg"
+async = True
 
 # ------------------------------------------------------------------
 server = DoomServer(screen_resolution=screen_resolution,
@@ -580,6 +597,6 @@ learner = Learner(available_actions_count=len(actions),
                   model_savefile=script_dir+"/tf/"+model_name+".ckpt")
 
 print("Training learner")
-learner.learn(server, actions)
+#learner.learn(server, actions)
 
-#learner.play(server, actions, episodes_to_watch=10)
+learner.play(server, actions, episodes_to_watch=10)
