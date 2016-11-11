@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import os
 
 script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
-folder = "simple_exploration_2/"
+folder = "deathmatch_exploration_2_no_bots/"
 
 def plot_file(filename, color, label, linestyle):
     epochs = []
@@ -31,9 +31,9 @@ def plot_file(filename, color, label, linestyle):
 plot_file('train.dat', color="red", label="train", linestyle="dashed")
 plot_file('test.dat', color="blue", label="test", linestyle="solid")
 
-plt.legend(loc='lower right', frameon=False)
-plt.xlim([0, 50])
-#plt.ylim(ymax=100)
+plt.legend(loc='upper left', frameon=False)
+plt.xlim([0, 200])
+plt.ylim(ymin=0)
 
 plt.axhline(0, color='black', linestyle="dashed")
 plt.axvline(0, color='black', linestyle="dashed")

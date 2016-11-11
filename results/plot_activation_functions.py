@@ -16,9 +16,11 @@ def tanh(x):
 
 
 x = np.arange(-6, 6, .1)
+plt.figure(figsize=(4,4))
+
 plt.plot(x, sigmoid(x), linestyle="solid", label="sigmoid", linewidth=2.0)
-plt.plot(x, relu(x), linestyle="solid", label="tanh", linewidth=2.0)
-plt.plot(x, tanh(x), linestyle="solid", label="ReLU", linewidth=2.0)
+plt.plot(x, relu(x), linestyle="solid", label="ReLU", linewidth=2.0)
+plt.plot(x, tanh(x), linestyle="solid", label="tanh", linewidth=2.0)
 
 plt.legend(loc='lower right', frameon=False)
 size = 5

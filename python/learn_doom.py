@@ -71,17 +71,19 @@ class Learner:
 
         print("Creating model")
 
-        # Input - [batch_size, time, x, y, channels]
-        s1_ = tf.placeholder(tf.float32, [None] + [None] + list(self.resolution) + [1], name="State")
-        timeteps = tf.placeholder(tf.int32, [])
+        # Input - [batch_size, time, x, y, channels(time)]
+        s1_ = tf.placeholder(tf.float32, [None] + [None] + list(self.resolution) + [None], name="State")
+
+        # Time steps [batch_size]
+        timeteps_ = tf.placeholder(tf.int32, [None])
         target_q_ = tf.placeholder(tf.float32, [None, available_actions_count], name="TargetQ")
 
         # Use channels for time steps
-        # Reshape [time * batch, resolution, channels]
-        s1_reshaped = s1_.reshape(s1_, [None] + list(self.resolution))
+        # Reshape [time * batch_size, resolution, channels(time)]
+        s1_reshaped = tf.reshape(tensor=s1_, shape=[None] + list(self.resolution) + [None])
 
         # Add 2 convolutional layers with ReLu activation
-        conv1 = tf.contrib.layers.convolution2d(s1_, num_outputs=conv1_filters, kernel_size=[6, 6], stride=[3, 3],
+        conv1 = tf.contrib.layers.convolution2d(s1_reshaped, num_outputs=conv1_filters, kernel_size=[6, 6], stride=[3, 3],
                                         activation_fn=tf.nn.relu,
                                         weights_initializer=tf.contrib.layers.xavier_initializer_conv2d(),
                                         biases_initializer=tf.constant_initializer(0.1))
@@ -102,7 +104,7 @@ class Learner:
 
         # Get the shape from fc1
         # [batch_size, time, ??]
-        fc1_reshaped = fc1.reshape(s1_, [None] + [None] + fc1.get_output_shape())
+        fc1_reshaped = fc1.reshape(s1_, [None] + timeteps_ + fc1.get_output_shape())
 
         num_units = 512
         cell = tf.nn.rnn_cell.GRUCell(num_units)

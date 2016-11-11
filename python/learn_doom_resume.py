@@ -292,7 +292,7 @@ class Learner:
             print("Results: mean: %.1f±%.1f," % (train_scores.mean(), train_scores.std()), \
                   "min: %.1f," % train_scores.min(), "max: %.1f," % train_scores.max())
 
-            train_results.append((epoch, train_scores.mean(), train_scores.std()))
+            train_results.append(str(epoch) + " " + str(train_scores.mean()) + " " + str(train_scores.std()))
 
             print("\nTesting...")
             game.close()
@@ -318,16 +318,16 @@ class Learner:
                 test_scores.mean(), test_scores.std()), "min: %.1f" % test_scores.min(),
                   "max: %.1f" % test_scores.max())
 
-            test_results.append((epoch, test_scores.mean(), test_scores.std()))
+            test_results.append(str(epoch) + " " + str(test_scores.mean()) + " " + str(test_scores.std()))
 
             print("Saving the network weigths to:", self.model_savefile)
             saver.save(self.session, self.model_savefile)
 
             print("Saving the results...")
             t = time()
-            with open("train_results_" + str(t) + ".txt", "w") as train_result_file:
+            with open("train_results_" + str(epoch) + ".txt", "w") as train_result_file:
                 train_result_file.write(str(train_results))
-            with open("test_results_" + str(t) + ".txt", "w") as test_result_file:
+            with open("test_results_" + str(epoch) + ".txt", "w") as test_result_file:
                 test_result_file.write(str(test_results))
 
             print("Total elapsed time: %.2f minutes" % ((time() - time_start) / 60.0))
@@ -353,7 +353,7 @@ class Learner:
                     game.advance_action()
 
                 if self.reward_exploration:
-                    score += self.position_reward(game, append=True)
+                    score += self.exploration_reward(game)
 
             game.close()
 
@@ -521,13 +521,12 @@ p_decay = 0.90
 '''
 
 # Deathmatch exploration
-'''
 hidden_nodes = 512
 conv1_filters = 32
 conv2_filters = 64
-replay_memory_size = 1000000
+replay_memory_size = 100000
 frame_repeat = 4
-learning_steps_per_epoch = 5000
+learning_steps_per_epoch = 10000
 test_episodes_per_epoch = 10
 reward_exploration = True
 epochs = 200
@@ -535,23 +534,17 @@ model_name = "deathmatch_exploration_no_bots"
 death_match = True
 bots = 0
 config = "../config/cig_train_expl.cfg"
-p_decay = 0.90
-'''
+p_decay = 0.95
 
-# Simple adv replay
-hidden_nodes = 512
-conv1_filters = 32
-conv2_filters = 64
-replay_memory_size = 1000000
-frame_repeat = 1
-learning_steps_per_epoch = 2000
-test_episodes_per_epoch = 10
-reward_exploration = False
-epochs = 20
-model_name = "simple_adv"
-death_match = False
-config = "../config/simpler_adv.cfg"
+# ---------------- SHOWCASE ----------------
+showcase = False
+# Uncomment these
+'''
 async = True
+visual = True
+showcase = True
+episodes_to_watch = 10
+'''
 
 # ------------------------------------------------------------------
 server = DoomServer(screen_resolution=screen_resolution,
@@ -596,7 +589,8 @@ learner = Learner(available_actions_count=len(actions),
                   p_decay=p_decay,
                   model_savefile=script_dir+"/tf/"+model_name+".ckpt")
 
-print("Training learner")
-#learner.learn(server, actions)
-
-learner.play(server, actions, episodes_to_watch=10)
+if not showcase:
+    print("Training learner")
+    learner.learn(server, actions)
+else:
+    learner.play(server, actions, episodes_to_watch=episodes_to_watch)
