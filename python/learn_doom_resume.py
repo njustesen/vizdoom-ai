@@ -538,12 +538,12 @@ p_decay = 0.95
 
 # ---------------- SHOWCASE ----------------
 showcase = False
+episodes_to_watch = 10
 # Uncomment these
 '''
 async = True
 visual = True
 showcase = True
-episodes_to_watch = 10
 '''
 
 # ------------------------------------------------------------------
