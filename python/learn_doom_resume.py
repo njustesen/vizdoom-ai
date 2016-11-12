@@ -31,10 +31,12 @@ class Learner:
                  frame_repeat=12,
                  update_every=4,
                  p_decay=0.95,
+                 e_start=1,
                  reward_exploration=False,
                  resolution=(30, 45),
                  sequence_length=10,
                  observation_history=4,
+                 death_match=False,
                  model_savefile="/tmp/model.ckpt",
                  start_from=0,
                  save_model=True,
@@ -49,11 +51,13 @@ class Learner:
         self.test_episodes_per_epoch = test_episodes_per_epoch
         self.frame_repeat = frame_repeat
         self.p_decay = p_decay
+        self.e_start = e_start
         self.resolution = resolution
         self.available_actions_count = available_actions_count
         self.model_savefile = model_savefile
         self.save_model = save_model
         self.load_model = load_model
+        self.death_match = death_match
         self.reward_exploration = reward_exploration
         self.sequence_length = sequence_length
         self.observation_history = observation_history
@@ -148,13 +152,13 @@ class Learner:
 
     def exploration_rate(self, epoch, linear=False):
         """# Define exploration rate change over time"""
-        start_eps = 1.0
+        start_eps = self.e_start
         end_eps = 0.1
         const_eps_epochs = 0.1 * self.epochs  # 10% of learning time
         eps_decay_epochs = 0.6 * self.epochs  # 60% of learning time
 
         if linear:
-            return max(1 - (epoch / self.epochs), end_eps)
+            return max(start_eps - (epoch / self.epochs), end_eps)
 
         if epoch < const_eps_epochs:
             return start_eps
@@ -179,9 +183,27 @@ class Learner:
             # Choose the best action according to the network.
             a = self.fn_get_best_action(s1)
 
+        kills_before = game.get_game_variable(GameVariable.KILLCOUNT)
+        ammo_before = game.get_game_variable(GameVariable.SELECTED_WEAPON_AMMO)
+        armor_before = game.get_game_variable(GameVariable.ARMOR)
         reward = game.make_action(actions[a], self.frame_repeat)
+        ammo_after = game.get_game_variable(GameVariable.SELECTED_WEAPON_AMMO)
+        armor_after = game.get_game_variable(GameVariable.ARMOR)
+        kills_after = game.get_game_variable(GameVariable.KILLCOUNT)
+
         if reward_exploration:
             reward = self.exploration_reward(game)
+        elif self.death_match:
+            if game.is_player_dead():
+                reward = -100
+            else:
+                reward = (kills_after - kills_before) * 1000 \
+                         + (armor_after - armor_before) \
+                         + (ammo_after - ammo_before) \
+                         - 1  # Sucks to be alive
+
+        if reward > 0:
+            print("Reward: " + str(reward))
 
         isterminal = game.is_episode_finished()
         s2 = self.preprocess(game.get_state().screen_buffer) if not isterminal else None
@@ -273,7 +295,10 @@ class Learner:
 
                 if game.is_episode_finished() or learning_step+1 == self.learning_steps_per_epoch:
                     if not self.reward_exploration:
-                        score = game.get_total_reward()
+                        if self.death_match:
+                            score = game.get_game_variable(GameVariable.FRAGCOUNT)
+                        else:
+                            score = game.get_total_reward()
                     train_scores.append(score)
                     train_episodes_finished += 1
                     self.positions = []
@@ -282,6 +307,7 @@ class Learner:
                     game = server.new_game()
 
                 reward = self.perform_learning_step(game, actions, epoch, self.reward_exploration, learning_step)
+
                 if self.reward_exploration:
                     score += reward
 
@@ -308,7 +334,10 @@ class Learner:
                     if self.reward_exploration:
                         score += self.exploration_reward(game)
                 if not self.reward_exploration:
-                    score = game.get_total_reward()
+                    if self.death_match:
+                        score = game.get_game_variable(GameVariable.FRAGCOUNT)
+                    else:
+                        score = game.get_total_reward()
                 test_scores.append(score)
                 game.close()
                 game = server.new_game()
@@ -320,8 +349,9 @@ class Learner:
 
             test_results.append(str(epoch) + " " + str(test_scores.mean()) + " " + str(test_scores.std()))
 
-            print("Saving the network weigths to:", self.model_savefile)
-            saver.save(self.session, self.model_savefile)
+            save_name = self.model_savefile + "_out"
+            print("Saving the network weigths to:", save_name)
+            saver.save(self.session, save_name)
 
             print("Saving the results...")
             t = time()
@@ -360,7 +390,10 @@ class Learner:
             # Sleep between episodes
             sleep(1.0)
             if not self.reward_exploration:
-                score = game.get_total_reward()
+                if self.death_match:
+                    score = game.get_game_variable(GameVariable.FRAGCOUNT)
+                else:
+                    score = game.get_total_reward()
             print("Total score: ", score)
 
 
@@ -375,7 +408,6 @@ class DoomServer:
         self.config_file_path = config_file_path
 
     def new_game(self):
-        print("Initializing doom...")
         game = DoomGame()
         game.load_config(self.config_file_path)
         game.set_window_visible(self.visual)
@@ -431,11 +463,15 @@ screen_resolution = ScreenResolution.RES_320X240
 scaled_resolution = (48, 64)
 batch_size = 64
 sequence_length = batch_size
+e_start = 1.0
 
 # Override these if used
 p_decay = 1
 bots = 7
 observation_history = 0
+
+# Resume
+start_from = 0
 
 # Super simple basic
 '''
@@ -521,6 +557,7 @@ p_decay = 0.90
 '''
 
 # Deathmatch exploration
+'''
 hidden_nodes = 512
 conv1_filters = 32
 conv2_filters = 64
@@ -530,16 +567,35 @@ learning_steps_per_epoch = 10000
 test_episodes_per_epoch = 10
 reward_exploration = True
 epochs = 200
-model_name = "deathmatch_exploration_no_bots"
+model_name = "deathmatch_exploration_no_bots_2"
 death_match = True
 bots = 0
 config = "../config/cig_train_expl.cfg"
 p_decay = 0.95
+'''
+
+# Deathmatch from exploration
+hidden_nodes = 512
+conv1_filters = 32
+conv2_filters = 64
+replay_memory_size = 100000
+frame_repeat = 4
+learning_steps_per_epoch = 10000
+test_episodes_per_epoch = 10
+reward_exploration = False
+epochs = 200
+model_name = "deathmatch_exploration_no_bots_2"
+death_match = True
+bots = 7
+config = "../config/cig_train_expl.cfg"
+e_start = 0.75
+load_model = True
 
 # ---------------- SHOWCASE ----------------
 showcase = False
 episodes_to_watch = 10
 # Uncomment these
+
 '''
 async = True
 visual = True
@@ -566,10 +622,6 @@ print("Script path="+script_dir)
 
 print("Creating learner")
 
-# Resume
-start_from = 0
-load_model = False
-
 learner = Learner(available_actions_count=len(actions),
                   frame_repeat=frame_repeat,
                   hidden_nodes=hidden_nodes,
@@ -587,6 +639,8 @@ learner = Learner(available_actions_count=len(actions),
                   start_from=start_from,
                   load_model=load_model,
                   p_decay=p_decay,
+                  e_start=e_start,
+                  death_match=death_match,
                   model_savefile=script_dir+"/tf/"+model_name+".ckpt")
 
 if not showcase:

@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import os
 
 script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
-folder = "deathmatch_exploration_2_no_bots/"
+folder = "deathmatch_exploration_no_bots_2/"
 
 def plot_file(filename, color, label, linestyle):
     epochs = []
