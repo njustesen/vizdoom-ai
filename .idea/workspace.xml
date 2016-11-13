@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c5765c2-e4b2-4448-a6d3-6005411f9d58" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/cig_train.cfg" afterPath="$PROJECT_DIR$/config/cig_train.cfg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python/learn_doom_resume.py" afterPath="$PROJECT_DIR$/python/learn_doom_resume.py" />
     </list>
     <ignored path="vizdoom-ai.iws" />
@@ -28,8 +26,8 @@
       <file leaf-file-name="learn_doom_resume.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/python/learn_doom_resume.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6213018">
-              <caret line="204" column="9" selection-start-line="204" selection-start-column="9" selection-end-line="204" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.8224852">
+              <caret line="434" column="0" selection-start-line="434" selection-start-column="0" selection-end-line="434" selection-end-column="0" />
               <folding>
                 <element signature="e#46#77#0" expanded="true" />
               </folding>
@@ -691,12 +689,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/python/learn_doom_resume.py</url>
-          <line>339</line>
+          <line>341</line>
           <option name="timeStamp" value="130" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/python/learn_doom_resume.py</url>
-          <line>352</line>
+          <line>353</line>
           <option name="timeStamp" value="133" />
         </line-breakpoint>
       </breakpoints>
@@ -1078,8 +1076,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/python/learn_doom_resume.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6213018">
-          <caret line="204" column="9" selection-start-line="204" selection-start-column="9" selection-end-line="204" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.8224852">
+          <caret line="434" column="0" selection-start-line="434" selection-start-column="0" selection-end-line="434" selection-end-column="0" />
           <folding>
             <element signature="e#46#77#0" expanded="true" />
           </folding>

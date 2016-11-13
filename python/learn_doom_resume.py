@@ -37,6 +37,7 @@ class Learner:
                  sequence_length=10,
                  observation_history=4,
                  death_match=False,
+                 model_loadfile="/tmp/model.ckpt",
                  model_savefile="/tmp/model.ckpt",
                  start_from=0,
                  save_model=True,
@@ -63,6 +64,7 @@ class Learner:
         self.observation_history = observation_history
         self.update_every = update_every
         self.start_from = start_from
+        self.model_loadfile = model_loadfile
 
         # Positions traversed during an episode
         self.positions = []
@@ -260,8 +262,8 @@ class Learner:
 
         saver = tf.train.Saver()
         if self.load_model:
-            print("Loading model from: ", self.model_savefile)
-            saver.restore(self.session, self.model_savefile)
+            print("Loading model from: ", self.model_loadfile)
+            saver.restore(self.session, self.model_loadfile)
         else:
             init = tf.initialize_all_variables()
             self.session.run(init)
@@ -349,9 +351,8 @@ class Learner:
 
             test_results.append(str(epoch) + " " + str(test_scores.mean()) + " " + str(test_scores.std()))
 
-            save_name = self.model_savefile + "_out"
-            print("Saving the network weigths to:", save_name)
-            saver.save(self.session, save_name)
+            print("Saving the network weigths to:", self.model_savefile)
+            saver.save(self.session, self.model_savefile)
 
             print("Saving the results...")
             t = time()
@@ -367,9 +368,9 @@ class Learner:
 
     def play(self, server, actions, episodes_to_watch=1):
 
-        print("Loading model from: ", self.model_savefile)
+        print("Loading model from: ", self.model_loadfile)
         saver = tf.train.Saver()
-        saver.restore(self.session, self.model_savefile)
+        saver.restore(self.session, self.model_loadfile)
 
         for _ in range(episodes_to_watch):
             game = server.new_game()
@@ -432,7 +433,6 @@ class DoomServer:
 
         self.start_game(game)
 
-        print("Doom initialized.")
         return game
 
     def addBots(self, game):
@@ -641,7 +641,8 @@ learner = Learner(available_actions_count=len(actions),
                   p_decay=p_decay,
                   e_start=e_start,
                   death_match=death_match,
-                  model_savefile=script_dir+"/tf/"+model_name+".ckpt")
+                  model_loadfile=script_dir+"/tf/"+model_name+".ckpt",
+                  model_savefile=script_dir+"/tf/"+model_name+"_out.ckpt")
 
 if not showcase:
     print("Training learner")
