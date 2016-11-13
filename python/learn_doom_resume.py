@@ -202,9 +202,6 @@ class Learner:
                          + (ammo_after - ammo_before) \
                          - 1  # Sucks to be alive
 
-        if reward > 0:
-            print("Reward: " + str(reward))
-
         isterminal = game.is_episode_finished()
         s2 = self.preprocess(game.get_state().screen_buffer) if not isterminal else None
 
