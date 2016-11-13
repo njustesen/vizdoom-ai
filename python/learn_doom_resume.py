@@ -202,8 +202,8 @@ class Learner:
                          + (ammo_after - ammo_before) \
                          - 1  # Sucks to be alive
 
-        if reward > 0:
-            print("Reward: " + str(reward))
+        #if reward > 0:
+            #print("Reward: " + str(reward))
 
         isterminal = game.is_episode_finished()
         s2 = self.preprocess(game.get_state().screen_buffer) if not isterminal else None
@@ -587,7 +587,7 @@ epochs = 200
 model_name = "deathmatch_exploration_no_bots_2"
 death_match = True
 bots = 7
-config = "../config/cig_train_expl.cfg"
+config = "../config/cig_train.cfg"
 e_start = 0.75
 load_model = True
 
