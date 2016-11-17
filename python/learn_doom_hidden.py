@@ -30,12 +30,14 @@ class Learner:
                  test_episodes_per_epoch=2,
                  frame_repeat=12,
                  p_decay=0.95,
+                 max_time=10,
                  reward_exploration=False,
                  resolution=(30, 45),
                  model_savefile="/tmp/model.ckpt",
                  save_model=True,
                  load_model=False):
 
+        self.max_time = max_time
         self.learning_rate = learning_rate
         self.discount_factor = discount_factor
         self.epochs = epochs
@@ -61,48 +63,67 @@ class Learner:
 
         # Start TF session
         print("Starting session")
-        #gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.8)
-        #self.session = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
-        #self.session = tf.Session()
+        session = tf.Session()
 
         print("Creating model")
-        # Create the input variables
-        s1_ = tf.placeholder(tf.float32, [None] + list(self.resolution) + [1], name="State")
-        a_ = tf.placeholder(tf.int32, [None], name="Action")
-        target_q_ = tf.placeholder(tf.float32, [None, available_actions_count], name="TargetQ")
 
-        # Add 2 convolutional layers with ReLu activation
-        conv1 = tf.contrib.layers.convolution2d(s1_, num_outputs=conv1_filters, kernel_size=[6, 6], stride=[3, 3],
+        # Input - [batch_size, time, x, y, channels]
+        s1_ = tf.placeholder(tf.float32, [None, None, resolution[0], resolution[1], 1], name="State")
+
+        # [batch_size, time, actions]
+        target_q_ = tf.placeholder(tf.float32, [None, None, available_actions_count], name="TargetQ")
+
+        # Reshape [batch_size * time, x, y, channels]
+        s1_reshaped = tf.reshape(tensor=s1_, shape=[-1, resolution[0], resolution[1], 1])
+
+        # 2 convolutional layers with ReLu activation
+        conv1 = tf.contrib.layers.convolution2d(s1_reshaped, num_outputs=32, kernel_size=[6, 6], stride=[3, 3],
                                         activation_fn=tf.nn.relu,
                                         weights_initializer=tf.contrib.layers.xavier_initializer_conv2d(),
                                         biases_initializer=tf.constant_initializer(0.1))
-        conv2 = tf.contrib.layers.convolution2d(conv1, num_outputs=conv2_filters, kernel_size=[3, 3], stride=[2, 2],
+        conv2 = tf.contrib.layers.convolution2d(conv1, num_outputs=16, kernel_size=[3, 3], stride=[2, 2],
                                         activation_fn=tf.nn.relu,
                                         weights_initializer=tf.contrib.layers.xavier_initializer_conv2d(),
                                         biases_initializer=tf.constant_initializer(0.1))
+
+        # Flatten
         conv2_flat = tf.contrib.layers.flatten(conv2)
 
-        #conv2_flat = tf.contrib.layers.DropoutLayer(conv2_flat, keep=0.5, name='dropout')
+        # Fully connected layer [batch_size * time, num_nodes]
+        fc1 = tf.contrib.layers.fully_connected(conv2_flat, num_outputs=32, activation_fn=tf.nn.relu,
+                                                weights_initializer=tf.contrib.layers.xavier_initializer(),
+                                                biases_initializer=tf.constant_initializer(0.1))
 
-        fc1 = tf.contrib.layers.fully_connected(conv2_flat, num_outputs=hidden_nodes, activation_fn=tf.nn.relu,
-                                        weights_initializer=tf.contrib.layers.xavier_initializer(),
-                                        biases_initializer=tf.constant_initializer(0.1))
+        # [batch_size, time, n_dense]
+        fc1_reshaped = tf.reshape(fc1, shape=[-1, max_time, 32])
 
-        #fc1 = tf.contrib.layers.DropoutLayer(fc1, keep=0.5, name='dropout')
+        # Transpose to [time, batch_size, n_dense]
+        fc1_transposed = tf.transpose(fc1_reshaped, [1, 0, 2])
 
-        #gru = tf.tensorlayer.RNNLayer(fc1, cell_fn=tf.nn.rnn_cell.GRUCell, n_hidden=128, n_steps=1, return_seq_2d=False)
+        # RNN
+        num_units = 512
+        cell = tf.nn.rnn_cell.GRUCell(num_units)
+        init_state = cell.zero_state(batch_size, tf.float32)
+        rnn_outputs, final_state = tf.nn.dynamic_rnn(cell, fc1_transposed, initial_state=init_state, time_major=True)
 
-        #gru = tf.contrib.layers.DropoutLayer(gru, keep=0.5, name='dropout')
+        # Transpose to [batch_size, time, n_dense]
+        rnn_transposed = tf.transpose(rnn_outputs, [1, 0, 2])
 
-        q = tf.contrib.layers.fully_connected(fc1, num_outputs=self.available_actions_count, activation_fn=None,
-                                      weights_initializer=tf.contrib.layers.xavier_initializer(),
-                                      biases_initializer=tf.constant_initializer(0.1))
-        best_a = tf.argmax(q, 1)
+        # Output
+        q = tf.contrib.layers.fully_connected(rnn_transposed,
+                                              num_outputs=available_actions_count,
+                                              activation_fn=None,
+                                              weights_initializer=tf.contrib.layers.xavier_initializer(),
+                                              biases_initializer=tf.constant_initializer(0.1))
 
+        # Best action
+        best_a = tf.argmax(q, 2)
+
+        # Calculate loss
         loss = tf.contrib.losses.mean_squared_error(q, target_q_)
 
-        optimizer = tf.train.RMSPropOptimizer(self.learning_rate)
         # Update the parameters according to the computed gradient using RMSProp.
+        optimizer = tf.train.RMSPropOptimizer(learning_rate)
         train_step = optimizer.minimize(loss)
 
         def function_learn(s1, target_q):
@@ -117,7 +138,8 @@ class Learner:
             return self.session.run(best_a, feed_dict={s1_: state})
 
         def function_simple_get_best_action(state):
-            return function_get_best_action(state.reshape([1, self.resolution[0], self.resolution[1], 1]))[0]
+            # TODO: max_time?
+            return function_get_best_action(state.reshape([1, 1, self.resolution[0], self.resolution[1], 1]))[0]
 
         self.fn_learn = function_learn
         self.fn_get_q_values = function_get_q_values
@@ -131,7 +153,8 @@ class Learner:
 
         # Get a random minibatch from the replay memory and learns from it.
         if self.memory.size > self.batch_size:
-            s1, a, s2, isterminal, r = self.memory.get_sample(self.batch_size)
+            #s1, a, s2, isterminal, r = self.memory.get_sample(self.batch_size)
+            s1, a, s2, isterminal, r = self.memory.get_sequence(self.max_time)
 
             q2 = np.max(self.fn_get_q_values(s2), axis=1)
             target_q = self.fn_get_q_values(s1)

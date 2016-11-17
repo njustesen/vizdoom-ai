@@ -71,16 +71,16 @@ class Learner:
 
         print("Creating model")
 
-        # Input - [batch_size, time, x, y, channels(time)]
-        s1_ = tf.placeholder(tf.float32, [None] + [None] + list(self.resolution) + [None], name="State")
+        # Input - [batch_size, x, y, channels(time)]
+        s1_ = tf.placeholder(tf.float32, [None] + list(self.resolution) + [None], name="State")
 
         # Time steps [batch_size]
-        timeteps_ = tf.placeholder(tf.int32, [None])
+        timesteps_ = tf.placeholder(tf.int32, [None])
         target_q_ = tf.placeholder(tf.float32, [None, available_actions_count], name="TargetQ")
 
         # Use channels for time steps
-        # Reshape [time * batch_size, resolution, channels(time)]
-        s1_reshaped = tf.reshape(tensor=s1_, shape=[None] + list(self.resolution) + [None])
+        # Reshape [batch_size, resolution, channels(time)]
+        s1_reshaped = tf.reshape(tensor=s1_, shape=[None] + list(self.resolution) + [timesteps_])
 
         # Add 2 convolutional layers with ReLu activation
         conv1 = tf.contrib.layers.convolution2d(s1_reshaped, num_outputs=conv1_filters, kernel_size=[6, 6], stride=[3, 3],
@@ -94,17 +94,13 @@ class Learner:
 
         conv2_flat = tf.contrib.layers.flatten(conv2)
 
-        #conv2_flat = tf.contrib.layers.DropoutLayer(conv2_flat, keep=0.5, name='dropout')
-
         fc1 = tf.contrib.layers.fully_connected(conv2_flat, num_outputs=hidden_nodes, activation_fn=tf.nn.relu,
                                         weights_initializer=tf.contrib.layers.xavier_initializer(),
                                         biases_initializer=tf.constant_initializer(0.1))
 
-        #fc1 = tf.contrib.layers.DropoutLayer(fc1, keep=0.5, name='dropout')
-
         # Get the shape from fc1
-        # [batch_size, time, ??]
-        fc1_reshaped = fc1.reshape(s1_, [None] + timeteps_ + fc1.get_output_shape())
+        # [batch_size, time, x, y]
+        fc1_reshaped = fc1.reshape(s1_, [None] + [None] + list(self.resolution))
 
         num_units = 512
         cell = tf.nn.rnn_cell.GRUCell(num_units)
@@ -118,6 +114,7 @@ class Learner:
                                       biases_initializer=tf.constant_initializer(0.1))
         best_a = tf.argmax(q, 1)
 
+        # TODO: only after history
         loss = tf.contrib.losses.mean_squared_error(q, target_q_)
 
         optimizer = tf.train.RMSPropOptimizer(self.learning_rate)

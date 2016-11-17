@@ -31,10 +31,26 @@ class ReplayMemory:
         i = sample(range(0, self.size), sample_size)
         return self.s1[i], self.a[i], self.s2[i], self.isterminal[i], self.r[i]
 
-    def get_sequence(self, n):
-        start = int(random() * (self.size - n))
-        end = min(start + n, self.size)
-        return self.s1[start:end], self.a[start:end], self.s2[start:end], self.isterminal[start:end], self.r[start:end]
+    def get_sequence(self, sequence_length, sample_size):
+
+        # Random start indexes
+        i = sample(range(0, self.size - sequence_length), sample_size)
+
+        s1 = []
+        a = []
+        s2 = []
+        isterminal = []
+        r = []
+
+        for start in i:
+            end = min(start + sequence_length, self.size)
+            s1.append([self.s1[start:end]])
+            a.append([self.a[start:end]])
+            s2.append([self.s2[start:end]])
+            isterminal.append([self.isterminal[start:end]])
+            r.append([self.r[start:end]])
+
+        return s1, a, s2, isterminal, r
 
 
 class Episode:

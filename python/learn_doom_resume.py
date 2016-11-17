@@ -14,6 +14,8 @@ import math
 import experience_replay as er
 import os
 
+import cv2
+
 class Learner:
 
     def __init__(self,
@@ -33,6 +35,7 @@ class Learner:
                  p_decay=0.95,
                  e_start=1,
                  reward_exploration=False,
+                 reward_shooting=False,
                  resolution=(30, 45),
                  sequence_length=10,
                  observation_history=4,
@@ -65,6 +68,7 @@ class Learner:
         self.update_every = update_every
         self.start_from = start_from
         self.model_loadfile = model_loadfile
+        self.reward_shooting = reward_shooting
 
         # Positions traversed during an episode
         self.positions = []
@@ -192,17 +196,21 @@ class Learner:
         ammo_after = game.get_game_variable(GameVariable.SELECTED_WEAPON_AMMO)
         armor_after = game.get_game_variable(GameVariable.ARMOR)
         kills_after = game.get_game_variable(GameVariable.KILLCOUNT)
+        ammo_gained = (ammo_after - ammo_before)
 
-        if reward_exploration:
+        if self.reward_shooting:
+            enemies = self.get_enemy_count(game)
+            shoot_reward = abs(ammo_gained) * enemies   # Bonus for shooting if enemies on screen
+            reward = shoot_reward
+        elif reward_exploration:
             reward = self.exploration_reward(game)
         elif self.death_match:
             if game.is_player_dead():
                 reward = -100
             else:
-                reward = (kills_after - kills_before) * 1000 \
+                reward = (kills_after - kills_before) * 500 \
                          + (armor_after - armor_before) \
-                         + (ammo_after - ammo_before) \
-                         - 1  # Sucks to be alive
+                         + ammo_gained
 
         #if reward > 0:
             #print("Reward: " + str(reward))
@@ -217,6 +225,15 @@ class Learner:
             self.learn_from_memory()
 
         return reward
+
+    def get_enemy_count(self, game):
+        state = game.get_state()
+        enemies = 0
+        for l in state.labels:
+            #print("Object id: " + str(l.object_id) + " object name: " + l.object_name + " label: " + str(l.value))
+            if l.object_id != 0 and l.object_name == "DoomPlayer":
+                enemies += 1
+        return enemies
 
     def get_position(self, game):
         return (game.get_game_variable(GameVariable.PLAYER_POSITION_X), game.get_game_variable(GameVariable.PLAYER_POSITION_Y))
@@ -414,6 +431,7 @@ class DoomServer:
         game.set_window_visible(self.visual)
         game.set_screen_format(ScreenFormat.GRAY8)
         game.set_screen_resolution(self.screen_resolution)
+        game.set_labels_buffer_enabled(True)
         if self.deathmatch:
             #self.game.set_doom_map("map01")  # Limited deathmatch.
             game.set_doom_map("map02")  # Full deathmatch.
@@ -464,6 +482,7 @@ scaled_resolution = (48, 64)
 batch_size = 64
 sequence_length = batch_size
 e_start = 1.0
+reward_shooting = False
 
 # Override these if used
 p_decay = 1
@@ -583,12 +602,13 @@ frame_repeat = 4
 learning_steps_per_epoch = 10000
 test_episodes_per_epoch = 10
 reward_exploration = False
+reward_shooting = True
 epochs = 200
 model_name = "deathmatch_exploration_no_bots_2"
 death_match = True
 bots = 7
 config = "../config/cig_train.cfg"
-e_start = 0.75
+e_start = 0.50
 load_model = True
 
 # ---------------- SHOWCASE ----------------
@@ -634,6 +654,7 @@ learner = Learner(available_actions_count=len(actions),
                   learning_steps_per_epoch=learning_steps_per_epoch,
                   test_episodes_per_epoch=test_episodes_per_epoch,
                   reward_exploration=reward_exploration,
+                  reward_shooting=reward_shooting,
                   resolution=scaled_resolution,
                   replay_memory_size=replay_memory_size,
                   start_from=start_from,
