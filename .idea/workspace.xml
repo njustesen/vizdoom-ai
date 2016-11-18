@@ -2,409 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c5765c2-e4b2-4448-a6d3-6005411f9d58" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/python/drqn.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_0.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_1.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_10.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_100.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_101.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_102.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_103.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_104.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_105.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_106.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_107.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_108.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_109.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_11.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_110.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_111.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_112.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_113.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_114.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_115.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_116.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_117.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_118.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_119.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_12.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_120.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_121.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_122.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_123.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_124.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_125.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_126.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_127.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_128.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_129.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_13.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_130.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_131.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_132.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_133.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_134.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_135.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_136.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_137.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_138.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_139.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_14.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_140.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_141.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_142.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_143.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_144.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_145.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_146.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_147.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_148.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_149.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_15.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_150.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_151.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_152.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_153.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_154.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_155.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_156.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_157.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_158.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_159.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_16.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_160.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_161.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_162.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_163.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_164.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_165.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_166.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_167.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_168.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_169.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_17.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_170.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_171.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_172.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_173.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_174.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_175.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_176.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_177.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_178.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_179.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_18.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_180.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_181.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_182.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_183.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_184.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_185.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_186.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_187.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_188.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_189.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_19.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_190.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_191.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_192.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_193.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_194.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_195.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_196.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_197.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_198.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_20.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_21.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_22.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_23.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_24.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_25.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_26.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_27.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_28.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_29.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_3.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_30.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_31.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_32.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_33.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_34.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_35.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_36.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_37.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_38.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_39.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_4.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_40.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_41.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_42.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_43.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_44.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_45.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_46.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_47.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_48.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_49.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_5.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_50.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_51.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_52.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_53.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_54.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_55.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_56.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_57.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_58.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_59.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_6.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_60.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_61.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_62.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_63.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_64.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_65.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_66.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_67.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_68.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_69.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_7.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_70.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_71.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_72.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_73.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_74.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_75.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_76.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_77.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_78.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_79.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_8.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_80.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_81.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_82.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_83.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_84.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_85.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_86.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_87.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_88.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_89.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_9.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_90.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_91.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_92.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_93.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_94.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_95.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_96.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_97.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_98.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/test_results_99.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_0.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_1.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_10.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_100.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_101.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_102.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_103.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_104.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_105.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_106.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_107.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_108.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_109.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_11.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_110.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_111.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_112.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_113.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_114.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_115.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_116.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_117.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_118.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_119.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_12.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_120.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_121.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_122.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_123.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_124.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_125.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_126.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_127.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_128.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_129.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_13.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_130.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_131.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_132.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_133.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_134.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_135.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_136.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_137.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_138.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_139.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_14.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_140.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_141.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_142.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_143.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_144.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_145.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_146.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_147.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_148.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_149.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_15.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_150.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_151.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_152.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_153.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_154.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_155.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_156.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_157.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_158.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_159.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_16.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_160.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_161.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_162.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_163.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_164.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_165.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_166.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_167.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_168.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_169.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_17.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_170.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_171.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_172.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_173.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_174.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_175.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_176.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_177.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_178.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_179.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_18.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_180.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_181.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_182.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_183.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_184.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_185.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_186.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_187.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_188.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_189.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_19.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_190.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_191.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_192.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_193.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_194.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_195.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_196.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_197.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_198.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_20.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_21.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_22.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_23.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_24.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_25.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_26.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_27.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_28.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_29.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_3.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_30.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_31.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_32.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_33.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_34.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_35.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_36.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_37.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_38.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_39.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_4.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_40.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_41.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_42.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_43.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_44.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_45.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_46.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_47.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_48.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_49.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_5.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_50.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_51.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_52.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_53.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_54.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_55.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_56.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_57.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_58.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_59.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_6.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_60.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_61.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_62.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_63.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_64.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_65.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_66.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_67.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_68.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_69.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_7.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_70.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_71.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_72.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_73.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_74.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_75.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_76.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_77.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_78.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_79.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_8.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_80.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_81.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_82.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_83.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_84.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_85.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_86.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_87.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_88.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_89.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_9.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_90.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_91.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_92.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_93.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_94.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_95.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_96.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_97.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_98.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/python/train_results_99.txt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python/experience_replay.py" afterPath="$PROJECT_DIR$/python/experience_replay.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python/learn_doom.py" afterPath="$PROJECT_DIR$/python/learn_doom.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python/learn_doom_hidden.py" afterPath="$PROJECT_DIR$/python/learn_doom_hidden.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python/learn_doom_resume.py" afterPath="$PROJECT_DIR$/python/learn_doom_resume.py" />
     </list>
     <ignored path="vizdoom-ai.iws" />
@@ -441,22 +38,10 @@
       <file leaf-file-name="learn_doom_resume.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/python/learn_doom_resume.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.32735425">
-              <caret line="601" column="32" selection-start-line="601" selection-start-column="32" selection-end-line="601" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.5051546">
+              <caret line="621" column="32" selection-start-line="621" selection-start-column="32" selection-end-line="621" selection-end-column="32" />
               <folding>
                 <element signature="e#46#77#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="basic.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/python/basic.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-40.0">
-              <caret line="72" column="52" selection-start-line="72" selection-start-column="52" selection-end-line="72" selection-end-column="52" />
-              <folding>
-                <element signature="e#610#647#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -472,13 +57,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="labels.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/python/labels.py">
+      <file leaf-file-name="basic.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python/basic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="36" />
+            <state vertical-scroll-proportion="-40.0">
+              <caret line="72" column="52" selection-start-line="72" selection-start-column="52" selection-end-line="72" selection-end-column="52" />
               <folding>
-                <element signature="e#696#733#0" expanded="true" />
+                <element signature="e#610#647#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -510,7 +95,29 @@
         <entry file="file://$PROJECT_DIR$/python/experience_replay.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+              <caret line="1" column="18" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="db_extractor.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../bwreplay-preprocessing/db_extractor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="94" column="33" selection-start-line="94" selection-start-column="33" selection-end-line="94" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#22#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="starcraft.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../bwreplay-preprocessing/starcraft.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -541,8 +148,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/python/learning.py" />
-        <option value="$PROJECT_DIR$/python/learning_tflearn_bots.py" />
         <option value="$PROJECT_DIR$/python/tensorflow.py" />
         <option value="$PROJECT_DIR$/python/ReplayMemory.py" />
         <option value="$PROJECT_DIR$/python/replay_memory.py" />
@@ -589,15 +194,18 @@
         <option value="$PROJECT_DIR$/python/drqn.py" />
         <option value="$PROJECT_DIR$/python/learn_doom_hidden.py" />
         <option value="$PROJECT_DIR$/python/experience_replay.py" />
+        <option value="$PROJECT_DIR$/../../bwreplay-preprocessing/unit_table.py" />
+        <option value="$PROJECT_DIR$/../../bwreplay-preprocessing/starcraft.py" />
+        <option value="$USER_HOME$/Downloads/learn_doom_resume.py" />
+        <option value="$PROJECT_DIR$/../../bwreplay-preprocessing/db_extractor.py" />
         <option value="$PROJECT_DIR$/python/learn_doom_resume.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-3840" />
-    <option name="y" value="-257" />
-    <option name="width" value="1461" />
-    <option name="height" value="1057" />
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="873" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -656,6 +264,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vizdoom-ai" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vizdoom-ai" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="python" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -684,23 +310,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.learn_doom_resume">
-    <configuration default="false" name="learn_doom (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="vizdoom-ai" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/learn_doom.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="learn_doom_resume" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -765,6 +374,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="vizdoom-ai" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/learning_tensorflow_bots.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="unit_table" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../bwreplay-preprocessing" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="vizdoom-ai" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../bwreplay-preprocessing/unit_table.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -892,19 +518,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.learn_doom (1)" />
-      <item index="1" class="java.lang.String" itemvalue="Python.learn_doom_resume" />
-      <item index="2" class="java.lang.String" itemvalue="Python.labels" />
-      <item index="3" class="java.lang.String" itemvalue="Python.drqn" />
-      <item index="4" class="java.lang.String" itemvalue="Python.learning_tensorflow_bots" />
+      <item index="0" class="java.lang.String" itemvalue="Python.learn_doom_resume" />
+      <item index="1" class="java.lang.String" itemvalue="Python.labels" />
+      <item index="2" class="java.lang.String" itemvalue="Python.drqn" />
+      <item index="3" class="java.lang.String" itemvalue="Python.learning_tensorflow_bots" />
+      <item index="4" class="java.lang.String" itemvalue="Python.unit_table" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.learn_doom_resume" />
-        <item index="1" class="java.lang.String" itemvalue="Python.drqn" />
-        <item index="2" class="java.lang.String" itemvalue="Python.learning_tensorflow_bots" />
-        <item index="3" class="java.lang.String" itemvalue="Python.labels" />
-        <item index="4" class="java.lang.String" itemvalue="Python.learn_doom (1)" />
+        <item index="1" class="java.lang.String" itemvalue="Python.unit_table" />
+        <item index="2" class="java.lang.String" itemvalue="Python.drqn" />
+        <item index="3" class="java.lang.String" itemvalue="Python.learning_tensorflow_bots" />
+        <item index="4" class="java.lang.String" itemvalue="Python.labels" />
       </list>
     </recent_temporary>
   </component>
@@ -922,20 +548,20 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-3840" y="-257" width="1461" height="1057" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="873" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26527777" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26920366" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32892805" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12020726" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17720208" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17669654" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24947146" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24974093" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30857876" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -984,16 +610,6 @@
           <option name="timeStamp" value="126" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/python/learn_doom_resume.py</url>
-          <line>358</line>
-          <option name="timeStamp" value="130" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/python/learn_doom_resume.py</url>
-          <line>370</line>
-          <option name="timeStamp" value="133" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/python/learn_doom.py</url>
           <line>85</line>
           <option name="timeStamp" value="137" />
@@ -1013,6 +629,16 @@
           <line>101</line>
           <option name="timeStamp" value="176" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/../../bwreplay-preprocessing/unit_table.py</url>
+          <line>33</line>
+          <option name="timeStamp" value="186" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/python/learn_doom_resume.py</url>
+          <line>207</line>
+          <option name="timeStamp" value="188" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -1021,7 +647,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="184" />
+      <option name="time" value="189" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -1031,38 +657,12 @@
         <watch expression="shape[0]" language="Python" />
         <watch expression="shape[0]*shape[1]" language="Python" />
         <watch expression="s = tf.shape(shape[0] + 10)" language="Python" />
+        <watch expression="self.terran" language="Python" />
+        <watch expression="table" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/results/simple_exploration/test_results.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="56" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="848" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/results/simple_exploration/train.dat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/results/simple_exploration/test.dat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/python/buffers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/results/simple_exploration_2/test_results.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1334,7 +934,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="36" />
           <folding>
-            <element signature="e#696#733#0" expanded="true" />
+            <element signature="e#696#733#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1352,24 +952,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/python/learning_tensorflow_bots.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="398" column="52" selection-start-line="398" selection-start-column="52" selection-end-line="398" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/python/basic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-40.0">
-          <caret line="72" column="52" selection-start-line="72" selection-start-column="52" selection-end-line="72" selection-end-column="52" />
-          <folding>
-            <element signature="e#610#647#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1401,6 +983,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../../bwreplay-preprocessing/unit_table.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8535156">
+          <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/experience_replay.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="18" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/python/learn_doom_hidden.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1409,18 +1007,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python/experience_replay.py">
+    <entry file="file://$PROJECT_DIR$/python/basic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-40.0">
+          <caret line="72" column="52" selection-start-line="72" selection-start-column="52" selection-end-line="72" selection-end-column="52" />
+          <folding>
+            <element signature="e#610#647#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../bwreplay-preprocessing/starcraft.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../bwreplay-preprocessing/db_extractor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="94" column="33" selection-start-line="94" selection-start-column="33" selection-end-line="94" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/learning_tensorflow_bots.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="398" column="52" selection-start-line="398" selection-start-column="52" selection-end-line="398" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/python/learn_doom_resume.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32735425">
-          <caret line="601" column="32" selection-start-line="601" selection-start-column="32" selection-end-line="601" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.5051546">
+          <caret line="621" column="32" selection-start-line="621" selection-start-column="32" selection-end-line="621" selection-end-column="32" />
           <folding>
             <element signature="e#46#77#0" expanded="true" />
           </folding>

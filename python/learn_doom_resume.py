@@ -594,6 +594,7 @@ p_decay = 0.95
 '''
 
 # Deathmatch from exploration
+'''
 hidden_nodes = 512
 conv1_filters = 32
 conv2_filters = 64
@@ -610,12 +611,31 @@ bots = 7
 config = "../config/cig_train.cfg"
 e_start = 0.50
 load_model = True
+'''
+
+# Deathmatch killing from deathmatch shooting
+hidden_nodes = 512
+conv1_filters = 32
+conv2_filters = 64
+replay_memory_size = 100000
+frame_repeat = 4
+learning_steps_per_epoch = 10000
+test_episodes_per_epoch = 10
+reward_exploration = False
+reward_shooting = False
+epochs = 200
+model_name = "deathmatch_shooting_reward"
+death_match = True
+bots = 7
+config = "../config/cig_train.cfg"
+e_start = 0.50
+load_model = True
 
 # ---------------- SHOWCASE ----------------
 showcase = False
 episodes_to_watch = 10
-# Uncomment these
 
+# Uncomment these
 '''
 async = True
 visual = True
