@@ -14,7 +14,7 @@ import math
 import experience_replay as er
 import os
 
-import cv2
+#import cv2
 
 class Learner:
 
@@ -636,11 +636,9 @@ showcase = False
 episodes_to_watch = 10
 
 # Uncomment these
-'''
 async = True
 visual = True
 showcase = True
-'''
 
 # ------------------------------------------------------------------
 server = DoomServer(screen_resolution=screen_resolution,

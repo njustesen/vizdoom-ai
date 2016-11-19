@@ -38,8 +38,8 @@
       <file leaf-file-name="learn_doom_resume.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/python/learn_doom_resume.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44329897">
-              <caret line="625" column="10" selection-start-line="625" selection-start-column="10" selection-end-line="625" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.26360545">
+              <caret line="636" column="0" selection-start-line="636" selection-start-column="0" selection-end-line="636" selection-end-column="0" />
               <folding>
                 <element signature="e#46#77#0" expanded="true" />
               </folding>
@@ -105,7 +105,7 @@
         <entry file="file://$PROJECT_DIR$/../../bwreplay-preprocessing/db_extractor.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="94" column="33" selection-start-line="94" selection-start-column="33" selection-end-line="94" selection-end-column="33" />
+              <caret line="118" column="11" selection-start-line="118" selection-start-column="11" selection-end-line="118" selection-end-column="11" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
@@ -117,17 +117,19 @@
         <entry file="file://$PROJECT_DIR$/../../bwreplay-preprocessing/starcraft.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
-              <folding />
+              <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="plot_tensorflow.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/results/plot_tensorflow.py">
+      <file leaf-file-name="unit_table.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../bwreplay-preprocessing/unit_table.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+              <caret line="34" column="1" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -194,9 +196,9 @@
         <option value="$PROJECT_DIR$/python/drqn.py" />
         <option value="$PROJECT_DIR$/python/learn_doom_hidden.py" />
         <option value="$PROJECT_DIR$/python/experience_replay.py" />
+        <option value="$USER_HOME$/Downloads/learn_doom_resume.py" />
         <option value="$PROJECT_DIR$/../../bwreplay-preprocessing/unit_table.py" />
         <option value="$PROJECT_DIR$/../../bwreplay-preprocessing/starcraft.py" />
-        <option value="$USER_HOME$/Downloads/learn_doom_resume.py" />
         <option value="$PROJECT_DIR$/../../bwreplay-preprocessing/db_extractor.py" />
         <option value="$PROJECT_DIR$/python/learn_doom_resume.py" />
       </list>
@@ -327,23 +329,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="labels" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="vizdoom-ai" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/labels.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="drqn" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -361,23 +346,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="learning_tensorflow_bots" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="vizdoom-ai" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/learning_tensorflow_bots.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="unit_table" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -391,6 +359,40 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="vizdoom-ai" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../bwreplay-preprocessing/unit_table.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="db_extractor" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../bwreplay-preprocessing" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="vizdoom-ai" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../bwreplay-preprocessing/db_extractor.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="starcraft" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../bwreplay-preprocessing" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="vizdoom-ai" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../bwreplay-preprocessing/starcraft.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -519,18 +521,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.learn_doom_resume" />
-      <item index="1" class="java.lang.String" itemvalue="Python.labels" />
-      <item index="2" class="java.lang.String" itemvalue="Python.drqn" />
-      <item index="3" class="java.lang.String" itemvalue="Python.learning_tensorflow_bots" />
-      <item index="4" class="java.lang.String" itemvalue="Python.unit_table" />
+      <item index="1" class="java.lang.String" itemvalue="Python.drqn" />
+      <item index="2" class="java.lang.String" itemvalue="Python.unit_table" />
+      <item index="3" class="java.lang.String" itemvalue="Python.db_extractor" />
+      <item index="4" class="java.lang.String" itemvalue="Python.starcraft" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.learn_doom_resume" />
         <item index="1" class="java.lang.String" itemvalue="Python.unit_table" />
-        <item index="2" class="java.lang.String" itemvalue="Python.drqn" />
-        <item index="3" class="java.lang.String" itemvalue="Python.learning_tensorflow_bots" />
-        <item index="4" class="java.lang.String" itemvalue="Python.labels" />
+        <item index="2" class="java.lang.String" itemvalue="Python.db_extractor" />
+        <item index="3" class="java.lang.String" itemvalue="Python.starcraft" />
+        <item index="4" class="java.lang.String" itemvalue="Python.drqn" />
       </list>
     </recent_temporary>
   </component>
@@ -557,11 +559,11 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32892805" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12020726" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17669654" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17669654" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24947146" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30857876" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30857876" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -630,14 +632,14 @@
           <option name="timeStamp" value="176" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/../../bwreplay-preprocessing/unit_table.py</url>
-          <line>33</line>
-          <option name="timeStamp" value="186" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/python/learn_doom_resume.py</url>
           <line>207</line>
           <option name="timeStamp" value="188" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/../../bwreplay-preprocessing/db_extractor.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="191" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -647,17 +649,12 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="189" />
+      <option name="time" value="193" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="a" language="Python" />
-        <watch expression="a.get_shape()" language="Python" />
-        <watch expression="shape" language="Python" />
-        <watch expression="shape[0]" language="Python" />
-        <watch expression="shape[0]*shape[1]" language="Python" />
-        <watch expression="s = tf.shape(shape[0] + 10)" language="Python" />
-        <watch expression="self.terran" language="Python" />
+        <watch expression="u_table" language="Python" />
+        <watch expression="frame.protoss" language="Python" />
         <watch expression="table" language="Python" />
       </configuration>
     </watches-manager>
@@ -983,14 +980,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../bwreplay-preprocessing/unit_table.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8535156">
-          <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/python/experience_replay.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1017,24 +1006,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../bwreplay-preprocessing/starcraft.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../bwreplay-preprocessing/db_extractor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="94" column="33" selection-start-line="94" selection-start-column="33" selection-end-line="94" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/python/learning_tensorflow_bots.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1043,10 +1014,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../../bwreplay-preprocessing/unit_table.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="1" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../bwreplay-preprocessing/starcraft.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../bwreplay-preprocessing/db_extractor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="118" column="11" selection-start-line="118" selection-start-column="11" selection-end-line="118" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/python/learn_doom_resume.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44329897">
-          <caret line="625" column="10" selection-start-line="625" selection-start-column="10" selection-end-line="625" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.26360545">
+          <caret line="636" column="0" selection-start-line="636" selection-start-column="0" selection-end-line="636" selection-end-column="0" />
           <folding>
             <element signature="e#46#77#0" expanded="true" />
           </folding>
