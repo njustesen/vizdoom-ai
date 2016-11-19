@@ -628,7 +628,7 @@ model_name = "deathmatch_shooting_reward"
 death_match = True
 bots = 7
 config = "../config/cig_train.cfg"
-e_start = 0.50
+e_start = 0.25
 load_model = True
 
 # ---------------- SHOWCASE ----------------
@@ -636,9 +636,11 @@ showcase = False
 episodes_to_watch = 10
 
 # Uncomment these
+'''
 async = True
 visual = True
 showcase = True
+'''
 
 # ------------------------------------------------------------------
 server = DoomServer(screen_resolution=screen_resolution,
