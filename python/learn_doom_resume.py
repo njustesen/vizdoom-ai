@@ -14,7 +14,7 @@ import math
 import experience_replay as er
 import os
 
-import cv2
+#import cv2
 
 class Learner:
 

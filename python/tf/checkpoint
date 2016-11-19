@@ -1,2 +1,2 @@
-model_checkpoint_path: "/home/niels/njustesen/ViZDoom/vizdoom-ai/python/tf/deathmatch_exploration_no_bots_2_out.ckpt"
-all_model_checkpoint_paths: "/home/niels/njustesen/ViZDoom/vizdoom-ai/python/tf/deathmatch_exploration_no_bots_2_out.ckpt"
+model_checkpoint_path: "/home/niels/njustesen/ViZDoom/vizdoom-ai/python/tf/deathmatch_shooting_reward_out.ckpt"
+all_model_checkpoint_paths: "/home/niels/njustesen/ViZDoom/vizdoom-ai/python/tf/deathmatch_shooting_reward_out.ckpt"
