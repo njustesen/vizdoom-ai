@@ -201,7 +201,11 @@ class Learner:
         if self.reward_shooting:
             enemies = self.get_enemy_count(game)
             shoot_reward = abs(ammo_gained) * enemies   # Bonus for shooting if enemies on screen
-            reward = shoot_reward
+            kill_reward = (kills_after - kills_before) * 100
+            if game.is_player_dead():
+                reward = -100
+            else:
+                reward = shoot_reward + kill_reward
         elif reward_exploration:
             reward = self.exploration_reward(game)
         elif self.death_match:
