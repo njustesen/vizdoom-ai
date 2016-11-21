@@ -649,7 +649,7 @@ async = True
 visual = True
 showcase = True
 '''
-visual = True
+
 # ------------------------------------------------------------------
 server = DoomServer(screen_resolution=screen_resolution,
                     config_file_path=config,
