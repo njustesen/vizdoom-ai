@@ -14,7 +14,7 @@ import math
 import experience_replay as er
 import os
 
-#import cv2
+import cv2
 
 class Learner:
 
@@ -201,11 +201,15 @@ class Learner:
         if self.reward_shooting:
             enemies = self.get_enemy_count(game)
             shoot_reward = abs(ammo_gained) * enemies   # Bonus for shooting if enemies on screen
-            kill_reward = (kills_after - kills_before) * 100
+            if enemies == 0:
+                shoot_reward = ammo_gained
+            kill_reward = (kills_after - kills_before) * 20
+            reward = shoot_reward - kill_reward
             if game.is_player_dead():
-                reward = -100
-            else:
-                reward = shoot_reward + kill_reward
+                reward -= 10
+            if ammo_gained > 0:
+                reward += 5
+            reward -= 1  # Life sucks
         elif reward_exploration:
             reward = self.exploration_reward(game)
         elif self.death_match:
@@ -598,7 +602,6 @@ p_decay = 0.95
 '''
 
 # Deathmatch from exploration
-'''
 hidden_nodes = 512
 conv1_filters = 32
 conv2_filters = 64
@@ -608,16 +611,16 @@ learning_steps_per_epoch = 10000
 test_episodes_per_epoch = 10
 reward_exploration = False
 reward_shooting = True
-epochs = 200
+epochs = 400
 model_name = "deathmatch_exploration_no_bots_2"
 death_match = True
 bots = 7
 config = "../config/cig_train.cfg"
 e_start = 0.50
 load_model = True
-'''
 
 # Deathmatch killing from deathmatch shooting
+'''
 hidden_nodes = 512
 conv1_filters = 32
 conv2_filters = 64
@@ -634,6 +637,7 @@ bots = 7
 config = "../config/cig_train.cfg"
 e_start = 0.25
 load_model = True
+'''
 
 # ---------------- SHOWCASE ----------------
 showcase = False
@@ -645,7 +649,7 @@ async = True
 visual = True
 showcase = True
 '''
-
+visual = True
 # ------------------------------------------------------------------
 server = DoomServer(screen_resolution=screen_resolution,
                     config_file_path=config,
