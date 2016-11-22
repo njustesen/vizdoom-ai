@@ -31,7 +31,7 @@ class ReplayMemory:
         i = sample(range(0, self.size), sample_size)
         return self.s1[i], self.a[i], self.s2[i], self.isterminal[i], self.r[i]
 
-    def get_sequence(self, sequence_length, sample_size):
+    def get_sequence(self, sample_size, sequence_length):
 
         # Random start indexes
         i = sample(range(0, self.size - sequence_length), sample_size)
