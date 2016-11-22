@@ -204,7 +204,7 @@ class Learner:
             if enemies == 0:
                 shoot_reward = ammo_gained
             kill_reward = (kills_after - kills_before) * 20
-            reward = shoot_reward - kill_reward
+            reward = shoot_reward + kill_reward
             if game.is_player_dead():
                 reward -= 10
             if ammo_gained > 0:
@@ -612,7 +612,7 @@ test_episodes_per_epoch = 10
 reward_exploration = False
 reward_shooting = True
 epochs = 400
-model_name = "deathmatch_exploration_no_bots_2"
+model_name = "deathmatch_shooting_reward"
 death_match = True
 bots = 7
 config = "../config/cig_train.cfg"
@@ -630,7 +630,7 @@ learning_steps_per_epoch = 10000
 test_episodes_per_epoch = 10
 reward_exploration = False
 reward_shooting = False
-epochs = 400
+epochs = 200
 model_name = "deathmatch_shooting_reward"
 death_match = True
 bots = 7
