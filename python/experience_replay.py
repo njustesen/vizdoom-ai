@@ -44,11 +44,11 @@ class ReplayMemory:
 
         for start in i:
             end = min(start + sequence_length, self.size)
-            s1.append([self.s1[start:end]])
-            a.append([self.a[start:end]])
-            s2.append([self.s2[start:end]])
-            isterminal.append([self.isterminal[start:end]])
-            r.append([self.r[start:end]])
+            s1.append(self.s1[start:end])
+            a.append(self.a[start:end])
+            s2.append(self.s2[start:end])
+            isterminal.append(self.isterminal[start:end])
+            r.append(self.r[start:end])
 
         return s1, a, s2, isterminal, r
 

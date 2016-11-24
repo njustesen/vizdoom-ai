@@ -27,16 +27,19 @@ class Learner:
                  learning_steps_per_epoch=2000,
                  replay_memory_size=10000,
                  batch_size=64,
+                 update_every=4,
                  test_episodes_per_epoch=2,
                  frame_repeat=12,
                  p_decay=0.95,
                  max_history=10,
+                 observation_history=4,
                  reward_exploration=False,
                  resolution=(30, 45),
                  model_savefile="/tmp/model.ckpt",
                  save_model=True,
                  load_model=False):
 
+        self.update_every = update_every
         self.learning_rate = learning_rate
         self.discount_factor = discount_factor
         self.epochs = epochs
@@ -47,6 +50,7 @@ class Learner:
         self.frame_repeat = frame_repeat
         self.p_decay = p_decay
         self.max_history = max_history
+        self.observation_history = observation_history
         self.resolution = resolution
         self.available_actions_count = available_actions_count
         self.model_savefile = model_savefile
@@ -130,33 +134,34 @@ class Learner:
         best_a = tf.argmax(q, 2)
 
         # Calculate loss
-        loss = tf.contrib.losses.mean_squared_error(q, target_q_)
+        loss = tf.contrib.losses.mean_squared_error(q[:, self.observation_history:, :], target_q_[:, self.observation_history:, :])
 
         # Update the parameters according to the computed gradient using RMSProp.
         optimizer = tf.train.RMSPropOptimizer(learning_rate)
         train_step = optimizer.minimize(loss)
 
-
         def function_learn(s1, target_q, seq_length):
             feed_dict = {s1_: s1, target_q_: target_q, seq_length_: seq_length, batch_size_:batch_size}
-            l, _ = session.run([loss, train_step], feed_dict=feed_dict)
+            l, _ = self.session.run([loss, train_step], feed_dict=feed_dict)
             return l
-
 
         def function_get_q_values(state, seq_length):
             return self.session.run(q, feed_dict={s1_: state, seq_length_: seq_length, batch_size_:batch_size})
 
         def function_get_best_action(state):
-            return self.session.run([best_a, final_state], feed_dict={s1_: state, seq_length_: 1, batch_size_:1})
+            a, s = self.session.run([best_a, final_state], feed_dict={s1_: state, seq_length_: 1, batch_size_: 1})
+            return a, s
 
         def function_get_best_action_rnn_state(state, rnn_init_state):
             return self.session.run([best_a, final_state], feed_dict={s1_: state, rnn_state_: rnn_init_state, seq_length_: 1, batch_size_:1})
 
         def function_simple_get_best_action(state):
-            return function_get_best_action(state.reshape([1, 1, self.resolution[0], self.resolution[1], 1]))[0]
+            a, s = function_get_best_action(state.reshape([1, 1, self.resolution[0], self.resolution[1], 1]))
+            return a[0][0], s
 
         def function_simple_get_best_action_rnn_state(state, rnn_init_state):
-            return function_get_best_action_rnn_state(state.reshape([1, 1, self.resolution[0], self.resolution[1], 1]), rnn_init_state)[0]
+            a, s = function_get_best_action_rnn_state(state.reshape([1, 1, self.resolution[0], self.resolution[1], 1]), rnn_init_state)
+            return a[0][0], s
 
         self.fn_learn = function_learn
         self.fn_get_q_values = function_get_q_values
@@ -177,11 +182,27 @@ class Learner:
             #s1, a, s2, isterminal, r = self.memory.get_sample(self.batch_size)
             s1, a, s2, isterminal, r = self.memory.get_sequence(self.batch_size, self.max_history)
 
-            q2 = np.max(self.fn_get_q_values(s2, self.max_history), axis=1)
+            q2 = np.max(self.fn_get_q_values(s2, self.max_history), axis=2)
             target_q = self.fn_get_q_values(s1, self.max_history)
             # target differs from q only for the selected action. The following means:
             # target_Q(s,a) = r + gamma * max Q(s2,_) if isterminal else r
-            target_q[np.arange(target_q.shape[0]), a] = r + self.discount_factor * (1 - isterminal) * q2
+
+            # Update target q
+            #target_q[np.arange(target_q.shape[0]), a] = r + self.discount_factor * (1 - isterminal) * q2
+
+            b_idx = 0
+            for batch in target_q:
+                for t_idx in range(self.observation_history, len(batch)):
+                    for a_idx in range(0, self.available_actions_count):
+                        reward = r[b_idx][t_idx]
+                        ist = isterminal[b_idx][t_idx]
+                        q2_max = q2[b_idx][t_idx]
+                        target_q[b_idx][t_idx][a_idx] = reward + self.discount_factor * (1 - ist) * q2_max
+                b_idx += 1
+
+            # Remove beginning of sequence - dont learn from these
+            #target_q = target_q[:, self.observation_history:, :]
+
             self.fn_learn(s1, target_q, self.max_history)
 
     def exploration_rate(self, epoch, linear=False):
@@ -203,7 +224,7 @@ class Learner:
         else:
             return end_eps
 
-    def perform_learning_step(self, game, actions, epoch, reward_exploration):
+    def perform_learning_step(self, game, actions, epoch, reward_exploration, learning_step):
         """ Makes an action according to eps-greedy policy, observes the result
         (next state, reward) and learns from the transition"""
 
@@ -240,7 +261,8 @@ class Learner:
         # Remember the transition that was just experienced.
         self.memory.add_transition(s1, a, s2, isterminal, reward)
 
-        self.learn_from_memory()
+        if learning_step % self.update_every == 0:
+            self.learn_from_memory()
 
         return reward
 
@@ -311,6 +333,7 @@ class Learner:
             print("Epsilon: " + str(eps))
             self.positions = []
             score = 0
+            self.rnn_new_state = True
             for learning_step in trange(self.learning_steps_per_epoch):
                 if game.is_player_dead():
                     if self.reward_exploration:
@@ -319,6 +342,7 @@ class Learner:
                         score = 0
                     self.positions = []
                     game.respawn_player()
+                    self.rnn_new_state = True
 
                 if game.is_episode_finished() or learning_step+1 == self.learning_steps_per_epoch:
                     if not self.reward_exploration:
@@ -328,8 +352,9 @@ class Learner:
                     train_episodes_finished += 1
                     self.positions = []
                     score = 0
+                    self.rnn_new_state = True
 
-                reward = self.perform_learning_step(game, actions, epoch, self.reward_exploration)
+                reward = self.perform_learning_step(game, actions, epoch, self.reward_exploration, learning_step)
                 if self.reward_exploration:
                     score += reward
 
@@ -344,6 +369,7 @@ class Learner:
 
             print("\nTesting...")
             test_scores = []
+            self.rnn_new_state = True
             for test_episode in trange(self.test_episodes_per_epoch):
                 game = server.restart_game(game)
                 self.positions = []
@@ -352,10 +378,11 @@ class Learner:
                     state = self.preprocess(game.get_state().screen_buffer)
                     if self.rnn_new_state:
                         best_action_index, s = self.fn_get_best_action(state)
+                        self.rnn_state = s
                     else:
                         best_action_index, s = self.fn_get_best_action_rnn(state, self.rnn_state)
+                        self.rnn_state = s
                     self.rnn_new_state = False
-                    self.rnn_state = s
                     game.make_action(actions[best_action_index], self.frame_repeat)
                     if self.reward_exploration:
                         score += self.exploration_reward(game)
@@ -508,12 +535,13 @@ conv2_filters = 8
 replay_memory_size = 10000
 frame_repeat = 12
 learning_steps_per_epoch = 1000
-test_episodes_per_epoch = 10
+test_episodes_per_epoch = 5
 reward_exploration = False
 epochs = 20
-model_name = "simple_basic"
+model_name = "simple_basic_dqrn"
 death_match = False
 config = "../config/simpler_basic.cfg"
+update_every = 10
 
 # Simple advanced
 '''
@@ -597,6 +625,7 @@ learner = Learner(available_actions_count=len(actions),
                   resolution=scaled_resolution,
                   replay_memory_size=replay_memory_size,
                   p_decay=p_decay,
+                  update_every=update_every,
                   model_savefile=script_dir+"/tf/"+model_name+".ckpt")
 
 print("Training learner")
