@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import os
 
 script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
-folder = "deathmatch_killing_2/"
+folder = "death_match_killing_400_2/"
 
 def plot_file(filename, color, label, linestyle):
     epochs = []
@@ -25,14 +25,14 @@ def plot_file(filename, color, label, linestyle):
     s = np.array(scores, dtype=float)
     std = np.array(std_devs, dtype=float)
 
-    plt.plot(e, s, color=color, label=label, linewidth=2.0, linestyle=linestyle)
-    plt.fill_between(e, s-std, s+std, facecolor=color, alpha=0.20, linewidth=0.0)
+    plt.plot(e, s, color=color, label=label, linewidth=1.0, linestyle=linestyle)
+    plt.fill_between(e, s-std, s+std, facecolor=color, alpha=0.10, linewidth=0.0)
 
 plot_file('train.dat', color="red", label="train", linestyle="dashed")
 plot_file('test.dat', color="blue", label="test", linestyle="solid")
 
 plt.legend(loc='upper left', frameon=False)
-plt.xlim([0, 226])
+plt.xlim([0, 400])
 plt.ylim(ymin=-2)
 plt.ylim(ymax=8)
 

@@ -197,17 +197,20 @@ class Learner:
         armor_after = game.get_game_variable(GameVariable.ARMOR)
         kills_after = game.get_game_variable(GameVariable.KILLCOUNT)
         ammo_gained = (ammo_after - ammo_before)
+        armor_gained = (armor_after - armor_before)
 
         if self.reward_shooting:
-            enemies = self.get_enemy_count(game)
-            shoot_reward = abs(ammo_gained) * enemies   # Bonus for shooting if enemies on screen
-            if enemies == 0:
-                shoot_reward = ammo_gained
-            kill_reward = (kills_after - kills_before) * 20
-            reward = shoot_reward + kill_reward
+            #enemies = self.get_enemy_count(game)
+            #shoot_reward = abs(ammo_gained) * enemies   # Bonus for shooting if enemies on screen
+            #if enemies == 0:
+            #shoot_reward = ammo_gained
+            reward = (kills_after - kills_before) * 50
+            #reward = shoot_reward + kill_reward
             if game.is_player_dead():
-                reward -= 10
+                reward -= 50
             if ammo_gained > 0:
+                reward += 5
+            if armor_gained > 0:
                 reward += 5
             reward -= 1  # Life sucks
         elif reward_exploration:
@@ -605,18 +608,18 @@ p_decay = 0.95
 hidden_nodes = 512
 conv1_filters = 32
 conv2_filters = 64
-replay_memory_size = 100000
+replay_memory_size = 250000
 frame_repeat = 4
 learning_steps_per_epoch = 10000
 test_episodes_per_epoch = 10
 reward_exploration = False
 reward_shooting = True
-epochs = 400
-model_name = "deathmatch_shooting_reward_out"
+epochs = 800
+model_name = "deathmatch_shooting_reward_400"
 death_match = True
 bots = 7
 config = "../config/cig_train.cfg"
-e_start = 0.50
+e_start = 0.60
 load_model = True
 
 # Deathmatch killing from deathmatch shooting
@@ -644,9 +647,11 @@ showcase = False
 episodes_to_watch = 10
 
 # Uncomment these
+'''
 async = True
 visual = True
 showcase = True
+'''
 
 # ------------------------------------------------------------------
 server = DoomServer(screen_resolution=screen_resolution,
