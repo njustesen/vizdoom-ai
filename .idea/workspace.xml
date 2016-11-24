@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c5765c2-e4b2-4448-a6d3-6005411f9d58" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python/experience_replay.py" afterPath="$PROJECT_DIR$/python/experience_replay.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python/learn_doom_hidden.py" afterPath="$PROJECT_DIR$/python/learn_doom_hidden.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python/learn_doom_resume.py" afterPath="$PROJECT_DIR$/python/learn_doom_resume.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/death_match_killing_400/train.dat" afterPath="$PROJECT_DIR$/results/death_match_killing_400/train.dat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/plot_tensorflow.py" afterPath="$PROJECT_DIR$/results/plot_tensorflow.py" />
     </list>
     <ignored path="vizdoom-ai.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,32 +31,10 @@
       <file leaf-file-name="learn_doom_resume.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/python/learn_doom_resume.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.74489796">
-              <caret line="206" column="47" selection-start-line="206" selection-start-column="47" selection-end-line="206" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.5068702">
+              <caret line="650" column="43" selection-start-line="650" selection-start-column="43" selection-end-line="650" selection-end-column="43" />
               <folding>
                 <element signature="e#46#77#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="learning_tensorflow_bots.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/python/learning_tensorflow_bots.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="398" column="52" selection-start-line="398" selection-start-column="52" selection-end-line="398" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="basic.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/python/basic.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-40.0">
-              <caret line="72" column="52" selection-start-line="72" selection-start-column="52" selection-end-line="72" selection-end-column="52" />
-              <folding>
-                <element signature="e#610#647#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -60,8 +43,18 @@
       <file leaf-file-name="learn_doom_hidden.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python/learn_doom_hidden.py">
           <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="15.333333">
+              <caret line="549" column="0" selection-start-line="549" selection-start-column="0" selection-end-line="549" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="experience_replay.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python/experience_replay.py">
+          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="156" column="51" selection-start-line="156" selection-start-column="51" selection-end-line="156" selection-end-column="51" />
+              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -70,8 +63,8 @@
       <file leaf-file-name="drqn.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python/drqn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-23.0">
-              <caret line="129" column="0" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+            <state vertical-scroll-proportion="-11.666667">
+              <caret line="104" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
               <folding>
                 <element signature="e#46#88#0" expanded="true" />
               </folding>
@@ -107,7 +100,7 @@
         <entry file="file://$PROJECT_DIR$/results/plot_tensorflow.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="37" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
+              <caret line="27" column="80" selection-start-line="27" selection-start-column="80" selection-end-line="27" selection-end-column="80" />
               <folding />
             </state>
           </provider>
@@ -180,22 +173,23 @@
         <option value="$PROJECT_DIR$/config/cig_train_expl.cfg" />
         <option value="$PROJECT_DIR$/config/cig_train.cfg" />
         <option value="$PROJECT_DIR$/python/learn_doom.py" />
-        <option value="$PROJECT_DIR$/python/learn_doom_hidden.py" />
-        <option value="$PROJECT_DIR$/python/experience_replay.py" />
         <option value="$USER_HOME$/Downloads/learn_doom_resume.py" />
         <option value="$PROJECT_DIR$/../../bwreplay-preprocessing/unit_table.py" />
         <option value="$PROJECT_DIR$/../../bwreplay-preprocessing/starcraft.py" />
         <option value="$PROJECT_DIR$/../../bwreplay-preprocessing/db_extractor.py" />
-        <option value="$PROJECT_DIR$/results/plot_tensorflow.py" />
         <option value="$PROJECT_DIR$/python/drqn.py" />
+        <option value="$PROJECT_DIR$/python/experience_replay.py" />
+        <option value="$PROJECT_DIR$/python/learn_doom_hidden.py" />
         <option value="$PROJECT_DIR$/python/learn_doom_resume.py" />
+        <option value="$PROJECT_DIR$/results/plot_tensorflow.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="873" />
+    <option name="x" value="-3840" />
+    <option name="y" value="-254" />
+    <option name="width" value="1797" />
+    <option name="height" value="990" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -286,24 +280,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vizdoom-ai" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vizdoom-ai" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="python" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tf" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -331,7 +307,7 @@
       <recent name="$PROJECT_DIR$/results/simple_adv" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.learn_doom_resume">
+  <component name="RunManager" selected="Python.plot_tensorflow">
     <configuration default="false" name="learn_doom_resume" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -366,23 +342,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="db_extractor" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../bwreplay-preprocessing" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="vizdoom-ai" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../bwreplay-preprocessing/db_extractor.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="plot_tensorflow" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -413,6 +372,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="vizdoom-ai" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/drqn.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="learn_doom_hidden" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="vizdoom-ai" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/learn_doom_hidden.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -542,17 +518,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.learn_doom_resume" />
       <item index="1" class="java.lang.String" itemvalue="Python.unit_table" />
-      <item index="2" class="java.lang.String" itemvalue="Python.db_extractor" />
-      <item index="3" class="java.lang.String" itemvalue="Python.plot_tensorflow" />
-      <item index="4" class="java.lang.String" itemvalue="Python.drqn" />
+      <item index="2" class="java.lang.String" itemvalue="Python.plot_tensorflow" />
+      <item index="3" class="java.lang.String" itemvalue="Python.drqn" />
+      <item index="4" class="java.lang.String" itemvalue="Python.learn_doom_hidden" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.learn_doom_resume" />
-        <item index="1" class="java.lang.String" itemvalue="Python.drqn" />
-        <item index="2" class="java.lang.String" itemvalue="Python.plot_tensorflow" />
-        <item index="3" class="java.lang.String" itemvalue="Python.unit_table" />
-        <item index="4" class="java.lang.String" itemvalue="Python.db_extractor" />
+        <item index="0" class="java.lang.String" itemvalue="Python.plot_tensorflow" />
+        <item index="1" class="java.lang.String" itemvalue="Python.learn_doom_resume" />
+        <item index="2" class="java.lang.String" itemvalue="Python.learn_doom_hidden" />
+        <item index="3" class="java.lang.String" itemvalue="Python.drqn" />
+        <item index="4" class="java.lang.String" itemvalue="Python.unit_table" />
       </list>
     </recent_temporary>
   </component>
@@ -570,16 +546,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="873" extended-state="0" />
+    <frame x="-3840" y="-254" width="1797" height="990" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18957011" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2286036" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32892805" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12020726" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17669654" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20935412" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24947146" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -643,7 +619,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/python/learn_doom_resume.py</url>
-          <line>215</line>
+          <line>207</line>
           <option name="timeStamp" value="188" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
@@ -659,7 +635,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="198" />
+      <option name="time" value="199" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -954,14 +930,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python/experience_replay.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="18" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/python/basic.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-40.0">
@@ -1008,36 +976,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/results/plot_tensorflow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="37" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/python/learn_doom_hidden.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="156" column="51" selection-start-line="156" selection-start-column="51" selection-end-line="156" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/python/drqn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.0">
-          <caret line="129" column="0" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+        <state vertical-scroll-proportion="-11.666667">
+          <caret line="104" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
           <folding>
             <element signature="e#46#88#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/python/experience_replay.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/learn_doom_hidden.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="15.333333">
+          <caret line="549" column="0" selection-start-line="549" selection-start-column="0" selection-end-line="549" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/test_results_226.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="5393" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results/plot_tensorflow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="80" selection-start-line="27" selection-start-column="80" selection-end-line="27" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/train_results_226.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="120" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="5322" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/python/learn_doom_resume.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.74489796">
-          <caret line="206" column="47" selection-start-line="206" selection-start-column="47" selection-end-line="206" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.5068702">
+          <caret line="650" column="43" selection-start-line="650" selection-start-column="43" selection-end-line="650" selection-end-column="43" />
           <folding>
             <element signature="e#46#77#0" expanded="true" />
           </folding>

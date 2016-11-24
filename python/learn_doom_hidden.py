@@ -30,14 +30,13 @@ class Learner:
                  test_episodes_per_epoch=2,
                  frame_repeat=12,
                  p_decay=0.95,
-                 max_time=10,
+                 max_history=10,
                  reward_exploration=False,
                  resolution=(30, 45),
                  model_savefile="/tmp/model.ckpt",
                  save_model=True,
                  load_model=False):
 
-        self.max_time = max_time
         self.learning_rate = learning_rate
         self.discount_factor = discount_factor
         self.epochs = epochs
@@ -47,6 +46,7 @@ class Learner:
         self.test_episodes_per_epoch = test_episodes_per_epoch
         self.frame_repeat = frame_repeat
         self.p_decay = p_decay
+        self.max_history = max_history
         self.resolution = resolution
         self.available_actions_count = available_actions_count
         self.model_savefile = model_savefile
@@ -63,12 +63,18 @@ class Learner:
 
         # Start TF session
         print("Starting session")
-        session = tf.Session()
+        self.session = tf.Session()
 
         print("Creating model")
 
         # Input - [batch_size, time, x, y, channels]
         s1_ = tf.placeholder(tf.float32, [None, None, resolution[0], resolution[1], 1], name="State")
+
+        # Number of frames in input
+        seq_length_ = tf.placeholder(tf.int32)
+
+        # Batch size
+        batch_size_ = tf.placeholder(tf.int32)
 
         # [batch_size, time, actions]
         target_q_ = tf.placeholder(tf.float32, [None, None, available_actions_count], name="TargetQ")
@@ -91,11 +97,11 @@ class Learner:
 
         # Fully connected layer [batch_size * time, num_nodes]
         fc1 = tf.contrib.layers.fully_connected(conv2_flat, num_outputs=32, activation_fn=tf.nn.relu,
-                                                weights_initializer=tf.contrib.layers.xavier_initializer(),
-                                                biases_initializer=tf.constant_initializer(0.1))
+                                        weights_initializer=tf.contrib.layers.xavier_initializer(),
+                                        biases_initializer=tf.constant_initializer(0.1))
 
         # [batch_size, time, n_dense]
-        fc1_reshaped = tf.reshape(fc1, shape=[-1, max_time, 32])
+        fc1_reshaped = tf.reshape(fc1, shape=[-1, seq_length_, 32])
 
         # Transpose to [time, batch_size, n_dense]
         fc1_transposed = tf.transpose(fc1_reshaped, [1, 0, 2])
@@ -103,8 +109,12 @@ class Learner:
         # RNN
         num_units = 512
         cell = tf.nn.rnn_cell.GRUCell(num_units)
-        init_state = cell.zero_state(batch_size, tf.float32)
-        rnn_outputs, final_state = tf.nn.dynamic_rnn(cell, fc1_transposed, initial_state=init_state, time_major=True)
+        zero_state = cell.zero_state(batch_size_, tf.float32)
+
+        # Initial RNN state
+        rnn_state_ = tf.placeholder_with_default(zero_state, [None, num_units])
+
+        rnn_outputs, final_state = tf.nn.dynamic_rnn(cell, fc1_transposed, initial_state=rnn_state_, time_major=True)
 
         # Transpose to [batch_size, time, n_dense]
         rnn_transposed = tf.transpose(rnn_outputs, [1, 0, 2])
@@ -126,42 +136,53 @@ class Learner:
         optimizer = tf.train.RMSPropOptimizer(learning_rate)
         train_step = optimizer.minimize(loss)
 
-        def function_learn(s1, target_q):
-            feed_dict = {s1_: s1, target_q_: target_q}
-            l, _ = self.session.run([loss, train_step], feed_dict=feed_dict)
+
+        def function_learn(s1, target_q, seq_length):
+            feed_dict = {s1_: s1, target_q_: target_q, seq_length_: seq_length, batch_size_:batch_size}
+            l, _ = session.run([loss, train_step], feed_dict=feed_dict)
             return l
 
-        def function_get_q_values(state):
-            return self.session.run(q, feed_dict={s1_: state})
+
+        def function_get_q_values(state, seq_length):
+            return self.session.run(q, feed_dict={s1_: state, seq_length_: seq_length, batch_size_:batch_size})
 
         def function_get_best_action(state):
-            return self.session.run(best_a, feed_dict={s1_: state})
+            return self.session.run([best_a, final_state], feed_dict={s1_: state, seq_length_: 1, batch_size_:1})
+
+        def function_get_best_action_rnn_state(state, rnn_init_state):
+            return self.session.run([best_a, final_state], feed_dict={s1_: state, rnn_state_: rnn_init_state, seq_length_: 1, batch_size_:1})
 
         def function_simple_get_best_action(state):
-            # TODO: max_time?
             return function_get_best_action(state.reshape([1, 1, self.resolution[0], self.resolution[1], 1]))[0]
+
+        def function_simple_get_best_action_rnn_state(state, rnn_init_state):
+            return function_get_best_action_rnn_state(state.reshape([1, 1, self.resolution[0], self.resolution[1], 1]), rnn_init_state)[0]
 
         self.fn_learn = function_learn
         self.fn_get_q_values = function_get_q_values
         self.fn_get_best_action = function_simple_get_best_action
+        self.fn_get_best_action_rnn = function_simple_get_best_action_rnn_state
 
         print("Model created")
+
+        self.rnn_state = zero_state
+        self.rnn_new_state = True
 
     def learn_from_memory(self):
         """ Learns from a single transition (making use of replay memory).
         s2 is ignored if s2_isterminal """
 
         # Get a random minibatch from the replay memory and learns from it.
-        if self.memory.size > self.batch_size:
+        if self.memory.size > self.batch_size + self.max_history:
             #s1, a, s2, isterminal, r = self.memory.get_sample(self.batch_size)
-            s1, a, s2, isterminal, r = self.memory.get_sequence(self.max_time)
+            s1, a, s2, isterminal, r = self.memory.get_sequence(self.batch_size, self.max_history)
 
-            q2 = np.max(self.fn_get_q_values(s2), axis=1)
-            target_q = self.fn_get_q_values(s1)
+            q2 = np.max(self.fn_get_q_values(s2, self.max_history), axis=1)
+            target_q = self.fn_get_q_values(s1, self.max_history)
             # target differs from q only for the selected action. The following means:
             # target_Q(s,a) = r + gamma * max Q(s2,_) if isterminal else r
             target_q[np.arange(target_q.shape[0]), a] = r + self.discount_factor * (1 - isterminal) * q2
-            self.fn_learn(s1, target_q)
+            self.fn_learn(s1, target_q, self.max_history)
 
     def exploration_rate(self, epoch, linear=False):
         """# Define exploration rate change over time"""
@@ -193,14 +214,27 @@ class Learner:
         if random() <= eps:
             a = randint(0, len(actions) - 1)
         else:
-            # Choose the best action according to the network.
-            a = self.fn_get_best_action(s1)
+            # Use last hidden state?
+            if self.rnn_new_state:
+                # Choose the best action according to the network.
+                a, s = self.fn_get_best_action(s1)
+                self.rnn_state = s
+            else:
+                a, s = self.fn_get_best_action_rnn(s1, self.rnn_state)
+                self.rnn_state = s
 
         reward = game.make_action(actions[a], self.frame_repeat)
         if reward_exploration:
             reward = self.exploration_reward(game)
 
         isterminal = game.is_episode_finished()
+
+        # Reset RNN state if game is over
+        if isterminal:
+            self.rnn_new_state = True
+        else:
+            self.rnn_new_state = False
+
         s2 = self.preprocess(game.get_state().screen_buffer) if not isterminal else None
 
         # Remember the transition that was just experienced.
@@ -316,13 +350,19 @@ class Learner:
                 score = 0
                 while not game.is_episode_finished():
                     state = self.preprocess(game.get_state().screen_buffer)
-                    best_action_index = self.fn_get_best_action(state)
+                    if self.rnn_new_state:
+                        best_action_index, s = self.fn_get_best_action(state)
+                    else:
+                        best_action_index, s = self.fn_get_best_action_rnn(state, self.rnn_state)
+                    self.rnn_new_state = False
+                    self.rnn_state = s
                     game.make_action(actions[best_action_index], self.frame_repeat)
                     if self.reward_exploration:
                         score += self.exploration_reward(game)
                 if not self.reward_exploration:
                     score = game.get_total_reward()
                 test_scores.append(score)
+                self.rnn_new_state = True
 
             test_scores = np.array(test_scores)
             print("Results: mean: %.1f±%.1f," % (
@@ -357,7 +397,11 @@ class Learner:
             score = 0
             while not game.is_episode_finished():
                 state = self.preprocess(game.get_state().screen_buffer)
-                best_action_index = self.fn_get_best_action(state)
+                if self.rnn_new_state:
+                    best_action_index, s = self.fn_get_best_action(state)
+                else:
+                    best_action_index, s = self.fn_get_best_action_rnn(state, self.rnn_state)
+                self.rnn_new_state = False
                 # Instead of make_action(a, frame_repeat) in order to make the animation smooth
                 game.set_action(actions[best_action_index])
                 for _ in range(self.frame_repeat):
@@ -365,6 +409,8 @@ class Learner:
 
                 if self.reward_exploration:
                     score += self.position_reward(game, append=True)
+
+            self.rnn_new_state = True
 
             # Sleep between episodes
             sleep(1.0)
@@ -430,7 +476,7 @@ class DoomServer:
 # --------------- EXPERIMENTS ---------------
 
 # Test settings
-visual = False
+visual = True
 async = False
 screen_resolution = ScreenResolution.RES_320X240
 scaled_resolution = (48, 64)
@@ -456,7 +502,6 @@ config = "../config/simpler_basic.cfg"
 '''
 
 # Simple basic
-'''
 hidden_nodes = 128
 conv1_filters = 8
 conv2_filters = 8
@@ -469,7 +514,6 @@ epochs = 20
 model_name = "simple_basic"
 death_match = False
 config = "../config/simpler_basic.cfg"
-'''
 
 # Simple advanced
 '''
@@ -505,6 +549,7 @@ p_decay = 0.90
 '''
 
 # Deathmatch exploration
+'''
 hidden_nodes = 512
 conv1_filters = 32
 conv2_filters = 64
@@ -519,6 +564,7 @@ death_match = True
 bots = 0
 config = "../config/cig_train_expl.cfg"
 p_decay = 0.90
+'''
 
 # ------------------------------------------------------------------
 server = DoomServer(screen_resolution=screen_resolution,
