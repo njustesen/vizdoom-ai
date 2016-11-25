@@ -503,7 +503,7 @@ class DoomServer:
 # --------------- EXPERIMENTS ---------------
 
 # Test settings
-visual = True
+visual = False
 async = False
 screen_resolution = ScreenResolution.RES_320X240
 scaled_resolution = (48, 64)
@@ -537,7 +537,7 @@ frame_repeat = 12
 learning_steps_per_epoch = 1000
 test_episodes_per_epoch = 5
 reward_exploration = False
-epochs = 20
+epochs = 50
 model_name = "simple_basic_dqrn"
 death_match = False
 config = "../config/simpler_basic.cfg"

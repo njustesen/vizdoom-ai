@@ -414,8 +414,6 @@ class Learner:
                 if self.reward_exploration:
                     score += self.exploration_reward(game)
 
-            game.close()
-
             # Sleep between episodes
             sleep(1.0)
             if not self.reward_exploration:
@@ -424,6 +422,8 @@ class Learner:
                 else:
                     score = game.get_total_reward()
             print("Total score: ", score)
+
+            game.close()
 
 
 class DoomServer:
@@ -615,7 +615,7 @@ test_episodes_per_epoch = 10
 reward_exploration = False
 reward_shooting = True
 epochs = 800
-model_name = "deathmatch_shooting_reward_400"
+model_name = "deathmatch_shooting_reward_2_400"
 death_match = True
 bots = 7
 config = "../config/cig_train.cfg"
@@ -647,11 +647,9 @@ showcase = False
 episodes_to_watch = 10
 
 # Uncomment these
-'''
 async = True
 visual = True
 showcase = True
-'''
 
 # ------------------------------------------------------------------
 server = DoomServer(screen_resolution=screen_resolution,
