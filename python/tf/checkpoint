@@ -1,2 +1,2 @@
-model_checkpoint_path: "/Users/noju/Documents/ViZDoom/vizdoom-ai/python/tf/simple_basic_dqrn.ckpt"
-all_model_checkpoint_paths: "/Users/noju/Documents/ViZDoom/vizdoom-ai/python/tf/simple_basic_dqrn.ckpt"
+model_checkpoint_path: "/Users/noju/ViZDoom-soren/ViZDoom-master_final/ViZDoom-master/vizdoom-ai/python/tf/deathmatch_shooting_reward_out.ckpt"
+all_model_checkpoint_paths: "/Users/noju/ViZDoom-soren/ViZDoom-master_final/ViZDoom-master/vizdoom-ai/python/tf/deathmatch_shooting_reward_out.ckpt"
