@@ -13,7 +13,6 @@ from tqdm import trange
 import math
 import experience_replay as er
 import os
-#from scipy.misc import toimage
 
 #import cv2
 
