@@ -13,9 +13,8 @@ from tqdm import trange
 import math
 import experience_replay as er
 import os
-from scipy.misc import toimage
 
-import cv2
+#import cv2
 
 class Learner:
 
@@ -314,8 +313,8 @@ class Learner:
         #img2 = Image.fromarray(img)
         #img2.save('my.png')
         #img2.show()
-        im = toimage(img)
-        im.save("foobar.png")
+        #im = toimage(img)
+        #im.save("foobar.png")
         return img
 
     def learn(self, server, actions):
