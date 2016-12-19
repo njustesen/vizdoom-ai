@@ -13,9 +13,8 @@ from tqdm import trange
 import math
 import experience_replay as er
 import os
-from scipy.misc import toimage
 
-import cv2
+#import cv2
 
 class Learner:
 
@@ -44,9 +43,11 @@ class Learner:
                  model_loadfile="/tmp/model.ckpt",
                  model_savefile="/tmp/model.ckpt",
                  start_from=0,
+                 reward_damage=False,
                  save_model=True,
                  load_model=False):
 
+        self.reward_damage = reward_damage
         self.learning_rate = learning_rate
         self.discount_factor = discount_factor
         self.epochs = epochs
@@ -193,14 +194,38 @@ class Learner:
         kills_before = game.get_game_variable(GameVariable.KILLCOUNT)
         ammo_before = game.get_game_variable(GameVariable.SELECTED_WEAPON_AMMO)
         armor_before = game.get_game_variable(GameVariable.ARMOR)
+        damage_dealt_before = game.get_game_variable(GameVariable.PLAYER_DAMAGE_GIVEN)
+        damage_recieved_before = game.get_game_variable(GameVariable.PLAYER_DAMAGE_RECIVED)
+        health_before = game.get_game_variable(GameVariable.HEALTH)
         reward = game.make_action(actions[a], self.frame_repeat)
+        health_after = game.get_game_variable(GameVariable.HEALTH)
+        damage_dealt_after = game.get_game_variable(GameVariable.PLAYER_DAMAGE_GIVEN)
+        damage_recieved_after = game.get_game_variable(GameVariable.PLAYER_DAMAGE_RECIVED)
         ammo_after = game.get_game_variable(GameVariable.SELECTED_WEAPON_AMMO)
         armor_after = game.get_game_variable(GameVariable.ARMOR)
         kills_after = game.get_game_variable(GameVariable.KILLCOUNT)
+
         ammo_gained = (ammo_after - ammo_before)
         armor_gained = (armor_after - armor_before)
+        health_gained = (health_after - health_before)
+        damage_dealt = (damage_dealt_after - damage_dealt_before)
+        if damage_dealt_after == 0:
+            damage_dealt = 0
 
-        if self.reward_shooting:
+        if self.reward_damage:
+            reward = damage_dealt
+            if ammo_gained > 0:
+                reward += 5
+
+            if armor_gained > 0:
+                reward += 5
+
+            if health_gained > 0:
+                reward += 5
+
+            reward -= 1 # Life sucks
+
+        elif self.reward_shooting:
             #enemies = self.get_enemy_count(game)
             #shoot_reward = abs(ammo_gained) * enemies   # Bonus for shooting if enemies on screen
             #if enemies == 0:
@@ -288,8 +313,8 @@ class Learner:
         #img2 = Image.fromarray(img)
         #img2.save('my.png')
         #img2.show()
-        im = toimage(img)
-        im.save("foobar.png")
+        #im = toimage(img)
+        #im.save("foobar.png")
         return img
 
     def learn(self, server, actions):
@@ -342,7 +367,13 @@ class Learner:
                     game.close()
                     game = server.new_game()
 
-                reward = self.perform_learning_step(game, actions, epoch, self.reward_exploration, learning_step)
+                try:
+                    reward = self.perform_learning_step(game, actions, epoch, self.reward_exploration, learning_step)
+                except:
+                    reward = 0
+                    game.close()
+                    game = server.new_game()
+                    print("VizDoom error")
 
                 if self.reward_exploration:
                     score += reward
@@ -363,19 +394,31 @@ class Learner:
             for test_episode in trange(self.test_episodes_per_epoch):
                 self.positions = []
                 score = 0
+                last_frags = 0
+                crash = False
                 while not game.is_episode_finished():
                     state = self.preprocess(game.get_state().screen_buffer)
                     best_action_index = self.fn_get_best_action(state)
-                    game.make_action(actions[best_action_index], self.frame_repeat)
+                    try:
+                        game.make_action(actions[best_action_index], self.frame_repeat)
+                    except:
+                        score = 0
+                        crash = True
+                        break
+                        print("VizDoom error")
                     if self.reward_exploration:
                         score += self.exploration_reward(game)
-                if not self.reward_exploration:
+                if crash:
+                    score = last_frags
+                elif not self.reward_exploration:
                     if self.death_match:
                         score = game.get_game_variable(GameVariable.FRAGCOUNT)
                     else:
                         score = game.get_total_reward()
                 test_scores.append(score)
-                game.close()
+                if not crash:
+                    game.close()
+
                 game = server.new_game()
 
             test_scores = np.array(test_scores)
@@ -409,27 +452,40 @@ class Learner:
         for _ in range(episodes_to_watch):
             game = server.new_game()
             score = 0
+            last_frags = 0
+            crash = False
             while not game.is_episode_finished():
                 state = self.preprocess(game.get_state().screen_buffer)
                 best_action_index = self.fn_get_best_action(state)
                 # Instead of make_action(a, frame_repeat) in order to make the animation smooth
-                game.set_action(actions[best_action_index])
-                for _ in range(self.frame_repeat):
-                    game.advance_action()
+                try:
+                    game.set_action(actions[best_action_index])
+                    for _ in range(self.frame_repeat):
+                        game.advance_action()
+                except:
+                    crash = True
+                    break
+                    print("VizDoom error")
+
+                last_frags = game.get_game_variable(GameVariable.FRAGCOUNT)
 
                 if self.reward_exploration:
                     score += self.exploration_reward(game)
 
             # Sleep between episodes
             sleep(1.0)
-            if not self.reward_exploration:
+
+            if crash:
+                score = last_frags
+            elif not self.reward_exploration:
                 if self.death_match:
                     score = game.get_game_variable(GameVariable.FRAGCOUNT)
                 else:
                     score = game.get_total_reward()
             print("Total score: ", score)
 
-            game.close()
+            if not crash:
+                game.close()
 
 
 class DoomServer:
@@ -500,6 +556,7 @@ batch_size = 64
 sequence_length = batch_size
 e_start = 1.0
 reward_shooting = False
+reward_damage = False
 
 # Override these if used
 p_decay = 1
@@ -610,22 +667,23 @@ config = "../config/cig_train_expl.cfg"
 p_decay = 0.95
 '''
 
-# Deathmatch from exploration
+# Deathmatch damage from exploration
 hidden_nodes = 512
 conv1_filters = 32
 conv2_filters = 64
 replay_memory_size = 250000
 frame_repeat = 4
-learning_steps_per_epoch = 10000
+learning_steps_per_epoch = 20000
 test_episodes_per_epoch = 10
 reward_exploration = False
-reward_shooting = True
-epochs = 800
-model_name = "deathmatch_shooting_reward_2_400"
+reward_shooting = False
+reward_damage = True
+epochs = 200
+model_name = "deathmatch_shooting_reward"
 death_match = True
 bots = 7
 config = "../config/cig_train.cfg"
-e_start = 0.60
+e_start = 0.20
 load_model = True
 
 # Deathmatch killing from deathmatch shooting
@@ -653,9 +711,11 @@ showcase = False
 episodes_to_watch = 10
 
 # Uncomment these
+'''
 async = True
 visual = True
 showcase = True
+'''
 
 # ------------------------------------------------------------------
 server = DoomServer(screen_resolution=screen_resolution,
@@ -690,6 +750,7 @@ learner = Learner(available_actions_count=len(actions),
                   test_episodes_per_epoch=test_episodes_per_epoch,
                   reward_exploration=reward_exploration,
                   reward_shooting=reward_shooting,
+                  reward_damage=reward_damage,
                   resolution=scaled_resolution,
                   replay_memory_size=replay_memory_size,
                   start_from=start_from,
